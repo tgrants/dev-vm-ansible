@@ -1,0 +1,6 @@
+---
+
+- hosts: phpdev
+  become: yes
+  roles:
+    - ../roles/base

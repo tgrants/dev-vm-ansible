@@ -1,0 +1,5 @@
+---
+
+- include_tasks: update.yml
+#- include_tasks: ssh.yml
+- include_tasks: sudo.yml
