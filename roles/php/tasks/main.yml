@@ -1,0 +1,48 @@
+---
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install Apache, PHP, and MariaDB packages
+  ansible.builtin.apt:
+    name:
+      - apache2
+      - php
+      - php-curl
+      - php-cli
+      - php-bcmath
+      - php-json
+      - php-mysql
+      - php-mbstring
+      - php-xml
+      - php-tokenizer
+      - php-zip
+      - mariadb-server
+      - sqlite3
+      - unzip
+    state: present
+    update_cache: yes
+
+- name: Ensure Apache is running and enabled at boot
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Ensure MariaDB is running and enabled at boot
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Download Composer installer
+  ansible.builtin.get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/composer-installer.php
+
+- name: Install Composer
+  ansible.builtin.command:
+    cmd: php /tmp/composer-installer.php --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
