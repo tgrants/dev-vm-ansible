@@ -1,0 +1,15 @@
+---
+
+- name: Find all log files in /var/log
+  ansible.builtin.find:
+    paths: /var/log
+    recurse: yes
+    file_type: file
+    patterns: "*.log"
+  register: log_files
+
+- name: Truncate log files
+  ansible.builtin.command:
+    cmd: "truncate -s 0 {{ item.path }}"
+  loop: "{{ log_files.files }}"
+  become: true

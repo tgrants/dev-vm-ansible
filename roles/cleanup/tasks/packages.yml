@@ -1,0 +1,15 @@
+---
+
+- name: Remove unnecessary packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ unnecessary_packages }}"
+  become: true
+
+- name: Clean APT cache
+  ansible.builtin.apt:
+    autoclean: true
+    autoremove: true
+    clean: true
+  become: true

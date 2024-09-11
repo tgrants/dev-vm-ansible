@@ -1,0 +1,57 @@
+---
+
+- name: Install required dependencies (wget, gpg)
+  ansible.builtin.apt:
+    name:
+      - wget
+      - gpg
+    state: present
+    update_cache: yes
+
+- name: Download Microsoft GPG key for VSCode
+  ansible.builtin.get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: /tmp/packages.microsoft.asc
+    mode: '0644'
+
+- name: Convert the Microsoft GPG key to GPG format
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o /tmp/packages.microsoft.gpg /tmp/packages.microsoft.asc
+  args:
+    creates: /tmp/packages.microsoft.gpg
+
+- name: Create keyring directory if it doesn't exist
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Install the Microsoft GPG key for APT
+  ansible.builtin.copy:
+    src: /tmp/packages.microsoft.gpg
+    dest: /etc/apt/keyrings/packages.microsoft.gpg
+    remote_src: yes
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Add the VSCode repository to APT sources
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
+    filename: vscode
+
+- name: Update APT cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install VSCode
+  ansible.builtin.apt:
+    name: code
+    state: present
+
+- name: Clean up temporary GPG file
+  ansible.builtin.file:
+    path: /tmp/packages.microsoft.gpg
+    state: absent
