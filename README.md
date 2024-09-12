@@ -2,8 +2,15 @@
 
 ## Instructions
 
-* Configure VM:
-	* Make sure the `hosts` file is configured correctly
+* Create the virtual machine:
+	* Install [Debian](https://www.debian.org/) on a [Virtualbox](https://www.virtualbox.org/) VM
+		* Create users (or update `hosts`)
+			* Set root password to `changeme`
+			* Create `user` with password `changeme`
+	* Prepare the VM for ansible
+		* Get the ip address with `ip a` and update `hosts`
+		* Log in as root and install sudo `apt install sudo`
+		* Add user to sudoers `adduser user sudo`
 	* Setup the VM `ansible-playbook playbooks/setup.yml`
 * Trim virtual disk:
 	* Remove all unnecessary files `ansible-playbook playbooks/cleanup.yml`

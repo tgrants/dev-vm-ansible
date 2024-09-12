@@ -1,0 +1,8 @@
+---
+
+- name: Install XFCE packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ xfce_packages }}"
+  become: true

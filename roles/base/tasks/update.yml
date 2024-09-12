@@ -1,6 +1,6 @@
 ---
 
-- name: Update all apt packages
+- name: Update all APT packages
   apt:
     update_cache: yes
     upgrade: yes

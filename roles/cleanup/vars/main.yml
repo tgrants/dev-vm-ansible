@@ -1,13 +1,2 @@
 unnecessary_packages:
-  - exfalso # Audio tag editor
-  - hv3 # Web browser
-  - quodlibet # Music player
-  # Libreoffice
-  - libreoffice-common
-  - libreoffice-core-nogui
-  - libreoffice-core
-  - libreoffice-base-core
-  # Xfce
-  - xfce4-power-manager
-  - xfburn # CD and DVD burner
-  - xsane # Document scanner
+  - pulseaudio
