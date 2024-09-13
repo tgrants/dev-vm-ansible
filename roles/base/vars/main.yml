@@ -1,5 +1,7 @@
 packages:
   - firefox-esr
+  - git
+  - mousepad # Visual text editor
 
 xfce_packages:
   - xfce4

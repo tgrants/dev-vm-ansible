@@ -4,5 +4,6 @@
 #- include_tasks: ssh.yml
 - include_tasks: sudo.yml
 - include_tasks: vscode.yml
-- include_tasks: xfce.yml
 - include_tasks: install.yml
+- include_tasks: xfce.yml
+- include_tasks: docs.yml

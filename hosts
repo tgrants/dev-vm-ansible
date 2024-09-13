@@ -1,2 +1,2 @@
 [phpdev]
-192.168.89.219 ansible_user=user ansible_ssh_pass=changeme ansible_become_pass=changeme ansible_connection=ssh ansible_python_interpreter=/usr/bin/python3
+192.168.202.34 ansible_user=user ansible_ssh_pass=changeme ansible_become_pass=changeme ansible_connection=ssh ansible_python_interpreter=/usr/bin/python3

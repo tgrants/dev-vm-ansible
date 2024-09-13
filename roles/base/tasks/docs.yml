@@ -1,0 +1,8 @@
+---
+
+- name: Create a text file from a template on the desktop
+  ansible.builtin.template:
+    src: "README.txt.j2"
+    dest: "/home/{{ username }}/Desktop/README.txt"
+    mode: '0644'
+  become: false
