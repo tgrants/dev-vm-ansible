@@ -1,2 +1,5 @@
 unnecessary_packages:
+  - libwebrtc-audio-processing1
   - pulseaudio
+  - pulseaudio-utils
+  - tasksel

@@ -1,0 +1,16 @@
+packages:
+  - apache2
+  - php
+  - php-curl
+  - php-cli
+  - php-bcmath
+  - php-json
+  - php-mysql
+  - php-mbstring
+  - php-xml
+  - php-tokenizer
+  - php-zip
+  - mariadb-server
+  - sqlite3
+  - php-sqlite3
+  - unzip

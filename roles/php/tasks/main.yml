@@ -6,23 +6,10 @@
 
 - name: Install Apache, PHP, and MariaDB packages
   ansible.builtin.apt:
-    name:
-      - apache2
-      - php
-      - php-curl
-      - php-cli
-      - php-bcmath
-      - php-json
-      - php-mysql
-      - php-mbstring
-      - php-xml
-      - php-tokenizer
-      - php-zip
-      - mariadb-server
-      - sqlite3
-      - unzip
+    name: "{{ item }}"
     state: present
-    update_cache: yes
+  loop: "{{ packages }}"
+  become: true
 
 - name: Ensure Apache is running and enabled at boot
   ansible.builtin.service:

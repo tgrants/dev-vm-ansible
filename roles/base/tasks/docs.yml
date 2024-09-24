@@ -6,3 +6,12 @@
     dest: "/home/{{ username }}/Desktop/README.txt"
     mode: '0644'
   become: false
+
+- name: Create projects directory
+  file:
+    path: "/home/{{ username }}/Projects"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0755'
+  become: true

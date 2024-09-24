@@ -44,4 +44,4 @@ To see changes, see [Releases](https://github.com/tgrants/php-dev-vm-ansible/rel
 
 ### License
 
-This repository is licensed under `The Unlicense`. See LICENSE for more information.
+This repository is licensed under `The Unlicense`. See `LICENSE` for more information.
