@@ -6,3 +6,15 @@
     group: "{{ username }}"
     mode: '0600'
   become: true
+
+- name: Vacuum journalctl logs older than 1 second
+  command: journalctl --vacuum-time=1s
+  register: journalctl_vacuum
+  changed_when: "'Freed' in journalctl_vacuum.stdout"
+
+- name: Remove archived journal logs
+  file:
+    path: /var/log/journal/
+    state: absent
+    recurse: yes
+  when: journalctl_vacuum is failed

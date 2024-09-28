@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script zeroes the disk
+# Created: {{ ansible_date_time.date }}
+
+sudo dd if=/dev/zero of=/bigemptyfile bs=4096k status=progress
+sudo rm -f /bigemptyfile

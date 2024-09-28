@@ -1,0 +1,6 @@
+# Add YAML as a language
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Add Jinja as a language
+*.j2 linguist-language=Jinja
