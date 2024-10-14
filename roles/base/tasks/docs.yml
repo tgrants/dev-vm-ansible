@@ -7,13 +7,6 @@
     mode: '0644'
   become: false
 
-- name: Create clear.sh in the home directory
-  ansible.builtin.template:
-    src: "clear.sh.j2"
-    dest: "/home/{{ username }}/clear.sh"
-    mode: '0755'
-  become: false
-
 - name: Create projects directory
   file:
     path: "/home/{{ username }}/Projects"
@@ -22,3 +15,10 @@
     group: "{{ username }}"
     mode: '0755'
   become: true
+
+- name: Create scripts from templates into /usr/local/bin
+  ansible.builtin.template:
+    src: "{{ item.Name }}.j2"
+    dest: "/usr/local/bin/{{ item.Name }}"
+    mode: '0755'
+  loop: "{{ scripts }}"

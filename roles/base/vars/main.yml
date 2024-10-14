@@ -15,3 +15,9 @@ xfce_packages:
   - xfconf
   - xfdesktop4
   - xfwm4
+
+scripts:
+  - Name: clear.sh
+    Description: "Zeroes the disk"
+  - Name: install-node-npm.sh
+    Description: "Installs node.js and npm"

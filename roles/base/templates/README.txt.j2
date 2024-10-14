@@ -11,5 +11,14 @@ Included tools:
 
 Next steps:
   - Update the system "sudo apt update && sudo apt upgrade"
+  - Change password by running "passwd"
   - Configure appearance
+  - Run any necessary scripts (see the list below)
   - Create your projects in the ~/Projects directory
+
+Scripts:
+{% for script in scripts %}
+  - {{ script.Name }} ({{ script.Description }})
+{% endfor %}
+
+Good luck!

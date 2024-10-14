@@ -5,10 +5,13 @@
 * Lightweight
 	* uses Xfce
 	* ~4 GiB virtual disk size with Virtualbox
-* Includes various tools
-	* PHP and Composer
-	* MariaDB and sqlite3
-	* VSCode and Git
+* Includes
+	* Various tools
+		* PHP and Composer
+		* MariaDB and sqlite3
+		* VSCode and Git
+	* Install scripts
+		* Node.js and npm
 
 ## Instructions
 
@@ -34,11 +37,13 @@
 		* `sudo rm -f /bigemptyfile`
 	* On host:
 		* `vboxmanage modifymedium /mnt/storage/VBOX/phpdev/phpdev.vdi --compact`
-			* edit the path to match your .vdi file
+			* Edit this path to match your .vdi file
 
 ## Other information
 
-### Changelog
+### Updates
+
+It is recommended to create a new install every time you run a new version of these playbooks.
 
 To see changes, see [Releases](https://github.com/tgrants/php-dev-vm-ansible/releases) in Github.
 
