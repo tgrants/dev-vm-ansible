@@ -4,14 +4,16 @@
 
 * Lightweight
 	* uses Xfce
-	* ~4 GiB virtual disk size with Virtualbox
+	* ~4 GiB initial virtual disk size with VirtualBox
+	* RAM >= 2 GiB
 * Includes
 	* Various tools
 		* PHP and Composer
-		* MariaDB and sqlite3
+		* Sqlite3
 		* VSCode and Git
 	* Install scripts
 		* Node.js and npm
+		* MariaDB
 
 ## Instructions
 

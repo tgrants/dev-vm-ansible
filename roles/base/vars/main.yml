@@ -2,6 +2,7 @@ packages:
   - firefox-esr
   - git
   - mousepad # Visual text editor
+  - unzip
 
 xfce_packages:
   - xfce4
@@ -19,5 +20,9 @@ xfce_packages:
 scripts:
   - Name: clear.sh
     Description: "Zeroes the disk"
+  - Name: install-github.sh
+    Description: "Installs and prepares github"
+  - Name: install-mariadb.sh
+    Description: "Installs mariadb and php-mysql"
   - Name: install-node-npm.sh
     Description: "Installs node.js and npm"

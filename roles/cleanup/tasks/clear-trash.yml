@@ -1,0 +1,5 @@
+- name: Clear trash
+  file:
+    path: /home/{{ username }}/.local/share/Trash/
+    state: absent
+  become: true

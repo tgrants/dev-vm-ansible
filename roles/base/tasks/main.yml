@@ -6,4 +6,4 @@
 - include_tasks: vscode.yml
 - include_tasks: install.yml
 - include_tasks: xfce.yml
-- include_tasks: docs.yml
+- include_tasks: files.yml

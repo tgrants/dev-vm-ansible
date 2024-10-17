@@ -4,7 +4,7 @@
   ansible.builtin.apt:
     update_cache: yes
 
-- name: Install Apache, PHP, and MariaDB packages
+- name: Install Apache, PHP, and sqlite3 packages
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -14,12 +14,6 @@
 - name: Ensure Apache is running and enabled at boot
   ansible.builtin.service:
     name: apache2
-    state: started
-    enabled: yes
-
-- name: Ensure MariaDB is running and enabled at boot
-  ansible.builtin.service:
-    name: mariadb
     state: started
     enabled: yes
 
