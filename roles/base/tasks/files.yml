@@ -1,5 +1,14 @@
 ---
 
+- name: Create Desktop directory
+  file:
+    path: "/home/{{ username }}/Desktop"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0755'
+  become: true
+
 - name: Create a text file from a template on the desktop
   ansible.builtin.template:
     src: "README.txt.j2"
@@ -18,7 +27,7 @@
 
 - name: Create scripts from templates into /usr/local/bin
   ansible.builtin.template:
-    src: "{{ item.Name }}.j2"
+    src: "{{ item.Name }}.sh.j2"
     dest: "/usr/local/bin/{{ item.Name }}"
-    mode: '0755'
-  loop: "{{ scripts }}"
+    mode: "0755"
+  loop: "{{ scripts | selectattr('Description', 'defined') }}"

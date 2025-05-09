@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script zeroes the disk
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2025-05-09
+# File created: {{ ansible_date_time.date }}
+
+echo "Creating bigemptyfile"
+sudo dd if=/dev/zero of=/bigemptyfile bs=4096k status=progress
+echo "Removing bigemptyfile"
+sudo rm -f /bigemptyfile
+echo "Done"

@@ -3,9 +3,12 @@ packages:
   - git
   - mousepad # Visual text editor
   - unzip
+  - uuid-runtime
 
 xfce_packages:
   - xfce4
+  - xorg
+  - lightdm
   - libxfce4ui-utils
   - thunar
   - xfce4-appfinder
@@ -16,13 +19,16 @@ xfce_packages:
   - xfconf
   - xfdesktop4
   - xfwm4
+  - accountsservice
 
+# Scripts without a description are not added to the README
 scripts:
-  - Name: clear.sh
+  - Name: clear-disk
     Description: "Zeroes the disk"
-  - Name: install-github.sh
-    Description: "Installs and prepares github"
-  - Name: install-mariadb.sh
+  - Name: generate-id
+  - Name: install-github-cli
+    Description: "Installs and prepares Github cli"
+  - Name: install-mariadb
     Description: "Installs mariadb and php-mysql"
-  - Name: install-node-npm.sh
+  - Name: install-node-npm
     Description: "Installs node.js and npm"

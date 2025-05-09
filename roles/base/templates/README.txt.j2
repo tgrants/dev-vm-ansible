@@ -1,8 +1,8 @@
-PHP development VM v{{ version }}
+dev-vm v{{ version }}
 Created: {{ ansible_date_time.date }}
 
 See this repository for more information:
-https://github.com/tgrants/php-dev-vm-ansible
+{{ source_url }}
 
 Included tools:
   - PHP and Composer
@@ -17,7 +17,7 @@ Next steps:
   - Create your projects in the ~/Projects directory
 
 Scripts (located in /usr/local/bin):
-{% for script in scripts %}
+{% for script in scripts | selectattr("Description", "defined") %}
   - {{ script.Name }} ({{ script.Description }})
 {% endfor %}
 

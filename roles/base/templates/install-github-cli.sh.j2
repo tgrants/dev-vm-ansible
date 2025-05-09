@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script installs and prepares Github cli
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2025-05-09
+# File created: {{ ansible_date_time.date }}
+
+sudo apt install gh
+
+read -rp "Authenticate GitHub now? (y/n): " confirm
+confirm=${confirm,,}
+
+if [[ "$confirm" =~ ^(y|yes)$ ]]; then
+	gh auth login
+fi
+

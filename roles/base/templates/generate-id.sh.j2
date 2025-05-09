@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script generates a unique ID for the VM
+# Dependencies: uuidgen-runtime
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2025-05-08
+# File created: {{ ansible_date_time.date }}
+
+ID_FILE="/etc/dev_vm_id"
+
+if [ ! -f "$ID_FILE" ]; then
+	uuidgen > "$ID_FILE"
