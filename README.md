@@ -49,6 +49,11 @@ It is recommended to create a new install every time you run a new version of th
 
 To see changes, see [Releases](https://github.com/tgrants/php-dev-vm-ansible/releases) in Github.
 
-### License
+## License
 
-This repository is licensed under `The Unlicense`. See `LICENSE` for more information.
+> [!NOTE]
+>
+> Versions below v4 are licensed under the terms of the [Unlicense](https://choosealicense.com/licenses/unlicense/).
+
+This project is licensed under the terms of the [MIT license](https://choosealicense.com/licenses/mit/).
+See the [LICENSE](LICENSE) file for more information.
