@@ -5,7 +5,7 @@ Automated development virtual machine setup for students using [Ansible](https:/
 ## Features
 
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-* ✅ **Compact** – Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
+* ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts
 * 🟡 **Custom xfce theme** (planned)
 * 🟡 **Telemetry** (opt-out, planned)
