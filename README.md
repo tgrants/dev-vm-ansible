@@ -13,6 +13,7 @@ Automated development virtual machine setup for students using [Ansible](https:/
 ### Tools
 
 * PHP and Composer
+* Python
 * Sqlite3
 * VSCode and Git
 
@@ -28,16 +29,20 @@ Automated development virtual machine setup for students using [Ansible](https:/
 
 #### Create the virtual machine
 
-* Install [Debian](https://www.debian.org/) on a [Virtualbox](https://www.virtualbox.org/) VM
-	* Create users (or update `hosts`)
+* Create a [Virtualbox](https://www.virtualbox.org/) VM
+	* A 20 GB VDI disk should be enough, adjust for your requirements
+* Install [Debian](https://www.debian.org/)
+	* Set the hostname e.g. *devvm*
+	* Create users (or update [`hosts`](hosts))
 		* Set root password to `pass`
 		* Create `user` with password `pass`
+	* Partition disks - select "Guided - use entire disk" and "All files in one partiton" for simpilcity
 	* Software selection - select only `SSH server`
-* Prepare the VM for ansible
+* Prepare the VM for ansible (after booting it for the first time)
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
 	* Log in as root `su -`
 	* Restart network service `systemctl restart networking`
-	* Get the ip address with `ip a` and update the `hosts` in this repository
+	* Get the ip address with `ip a` and update [`hosts`](hosts) in this repository
 	* Install sudo and python for Ansible `apt install sudo python3`
 	* Add user to sudoers `adduser user sudo`
 	* Copy key by SSH-ing into the VM `ssh user@192.168.x.y`
@@ -46,7 +51,7 @@ Automated development virtual machine setup for students using [Ansible](https:/
 #### Trim virtual disk
 
 * Remove all unnecessary files `ansible-playbook playbooks/cleanup.yml`
-* On VM, run `clear-disk`, then shut it down
+* On VM, run `clear-tmp` and `clear-disk`, then shut it down
 * On host, run `vboxmanage modifymedium /mnt/storage/VBOX/phpdev/phpdev.vdi --compact`
 	* Edit this path to match your .vdi file
 

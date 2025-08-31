@@ -30,4 +30,4 @@
     src: "{{ item.Name }}.sh.j2"
     dest: "/usr/local/bin/{{ item.Name }}"
     mode: "0755"
-  loop: "{{ scripts | selectattr('Description', 'defined') }}"
+  loop: "{{ scripts }}"

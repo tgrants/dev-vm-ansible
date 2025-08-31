@@ -1,0 +1,15 @@
+---
+
+- name: Remove /var/log
+  file:
+    path: /var/log/
+    state: absent
+  become: true
+
+- name: Recreate /var/log
+  file:
+    path: /var/log
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"

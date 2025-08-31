@@ -1,3 +1,5 @@
+---
+
 - name: Clear trash
   file:
     path: /home/{{ username }}/.local/share/Trash/

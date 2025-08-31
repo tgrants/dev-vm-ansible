@@ -1,0 +1,19 @@
+---
+
+- name: Clear user bash history
+  copy:
+    content: ""
+    dest: "/home/{{ username }}/.bash_history"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0600'
+  become: true
+
+- name: Clear root bash history
+  copy:
+    content: ""
+    dest: "/root/.bash_history"
+    owner: "root"
+    group: "root"
+    mode: '0600'
+  become: true

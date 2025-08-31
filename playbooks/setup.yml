@@ -1,6 +1,6 @@
 ---
 
-- hosts: phpdev
+- hosts: vm
   become: yes
   roles:
     - ../roles/base

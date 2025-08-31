@@ -1,6 +1,6 @@
 ---
 
 - include_tasks: packages.yml
-- include_tasks: truncate-logs.yml
-- include_tasks: clear-history.yml
 - include_tasks: clear-trash.yml
+- include_tasks: clear-bash-history.yml
+- include_tasks: clear-logs.yml

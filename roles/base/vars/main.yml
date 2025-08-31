@@ -1,9 +1,12 @@
 packages:
   - firefox-esr
   - git
+  - gpg
+  - python3 # Should already exist for ansible
   - mousepad # Visual text editor
   - unzip
   - uuid-runtime
+  - wget
 
 xfce_packages:
   - xfce4
@@ -25,6 +28,7 @@ xfce_packages:
 scripts:
   - Name: clear-disk
     Description: "Zeroes the disk"
+  - Name: clear-tmp
   - Name: generate-id
   - Name: install-github-cli
     Description: "Installs and prepares Github cli"
