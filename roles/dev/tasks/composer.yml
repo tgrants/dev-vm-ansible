@@ -1,16 +1,5 @@
 ---
 
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: yes
-
-- name: Install PHP and sqlite3 packages
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ packages }}"
-  become: true
-
 - name: Download Composer installer
   ansible.builtin.get_url:
     url: https://getcomposer.org/installer

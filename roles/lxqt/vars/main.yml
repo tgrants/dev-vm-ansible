@@ -1,0 +1,13 @@
+lxqt_packages:
+  - lxqt-panel
+  - lxqt-session
+  - lxqt-config
+  - lxqt-runner
+  - lxqt-policykit
+  - lxqt-notificationd
+  - lxqt-qtplugin
+  - pcmanfm-qt
+  - openbox
+  - qterminal
+  - xorg
+  - xinit

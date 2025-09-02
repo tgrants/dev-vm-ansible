@@ -1,4 +1,10 @@
 packages:
+# General purpose
+  - firefox-esr
+  - git
+  - mousepad # Visual text editor
+  - python3 # Should already exist to use ansible
+# PHP
   - php
   - php-curl
   - php-cli
@@ -8,5 +14,6 @@ packages:
   - php-xml
   - php-tokenizer
   - php-zip
+# Sqlite
   - sqlite3
   - php-sqlite3

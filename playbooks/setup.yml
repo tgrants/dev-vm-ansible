@@ -4,4 +4,5 @@
   become: yes
   roles:
     - ../roles/base
-    - ../roles/php
+    - ../roles/dev
+    - ../roles/lxqt

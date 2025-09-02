@@ -8,7 +8,6 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
 * ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts
-* 🟡 **Custom xfce theme** (planned)
 * 🟡 **Telemetry** (opt-out, planned)
 
 ### Tools
@@ -33,6 +32,7 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 #### Create the virtual machine
 
 * Create a [Virtualbox](https://www.virtualbox.org/) VM
+	* At least 2 GiB RAM is recommended for using an IDE and a browser at the same time
 	* A 20 GB VDI disk should be enough, adjust for your requirements
 * Install [Debian](https://www.debian.org/)
 	* Set the hostname e.g. *devvm*
@@ -50,8 +50,11 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 	* Add user to sudoers `adduser user sudo`
 	* Copy key by SSH-ing into the VM `ssh user@192.168.x.y`
 * Setup the VM `ansible-playbook playbooks/setup.yml`
+	* Edit `group_vars` to customize your setup
 
 #### Telemetry
+
+* Add telemetry `ansible-playbook playbooks/telemetry.yml`
 
 #### Trim virtual disk
 
