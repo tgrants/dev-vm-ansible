@@ -1,5 +1,4 @@
 packages:
-  - apache2
   - php
   - php-curl
   - php-cli

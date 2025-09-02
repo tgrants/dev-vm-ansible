@@ -1,6 +1,7 @@
 # dev-vm-ansible
 
 Automated development virtual machine setup for students using [Ansible](https://docs.ansible.com/).
+Created to reduce the time spent in classrooms downloading and configuring virtual machines.
 
 ## Features
 
@@ -22,6 +23,8 @@ Automated development virtual machine setup for students using [Ansible](https:/
 * Node.js and npm
 * MariaDB
 * Github cli
+
+## Download
 
 ## Instructions
 
@@ -47,6 +50,8 @@ Automated development virtual machine setup for students using [Ansible](https:/
 	* Add user to sudoers `adduser user sudo`
 	* Copy key by SSH-ing into the VM `ssh user@192.168.x.y`
 * Setup the VM `ansible-playbook playbooks/setup.yml`
+
+#### Telemetry
 
 #### Trim virtual disk
 

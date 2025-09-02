@@ -4,18 +4,12 @@
   ansible.builtin.apt:
     update_cache: yes
 
-- name: Install Apache, PHP, and sqlite3 packages
+- name: Install PHP and sqlite3 packages
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop: "{{ packages }}"
   become: true
-
-- name: Ensure Apache is running and enabled at boot
-  ansible.builtin.service:
-    name: apache2
-    state: started
-    enabled: yes
 
 - name: Download Composer installer
   ansible.builtin.get_url:
