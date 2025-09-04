@@ -34,12 +34,15 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 * Create a [Virtualbox](https://www.virtualbox.org/) VM
 	* At least 2 GiB RAM is recommended for using an IDE and a browser at the same time
 	* A 20 GB VDI disk should be enough, adjust for your requirements
-* Install [Debian](https://www.debian.org/)
+* Install [Debian 13](https://www.debian.org/)
+	* Select `en_US.UTF-8 locale`
 	* Set the hostname e.g. *devvm*
 	* Create users (or update [`hosts`](hosts))
 		* Set root password to `pass`
 		* Create `user` with password `pass`
-	* Partition disks - select "Guided - use entire disk" and "All files in one partiton" for simpilcity
+	* Partition disks
+		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
+		* Manually create a single bootable ext4 partition for a swapless setup
 	* Software selection - select only `SSH server`
 * Prepare the VM for ansible (after booting it for the first time)
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
