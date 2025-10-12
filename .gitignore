@@ -1,1 +1,9 @@
+# Hosts
+hosts
+
+# Development tools
 .vscode/
+
+# Local files and directories
+*.local
+*.local.*

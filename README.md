@@ -7,23 +7,34 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
 * ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
-* ✅ **Preconfigured tools** - comes with development software and setup scripts
+* ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 * 🟡 **Telemetry** (opt-out, planned)
 
 ### Tools
 
-* PHP and Composer
-* Python
-* Sqlite3
-* VSCode and Git
+* [PHP](https://www.php.net/) and [Composer](https://getcomposer.org/)
+* [Python](https://www.python.org/)
+* [Sqlite3](https://sqlite.org/)
+* [VSCode](https://code.visualstudio.com/)
+* [Git](https://git-scm.com/)
+* [Firefox](https://www.firefox.com)
 
 ### Install scripts
 
-* Node.js and npm
-* MariaDB
-* Github cli
+* [MariaDB](https://mariadb.org/)
+* [GitHub CLI](https://cli.github.com/)
 
 ## Download
+
+If you don't require a custom configuration, you can use one of these virtual machines.
+
+| Name | Date | Link |
+|---|---|---|
+| dvm_v6 | TBD | TBD |
+
+### Similar projects
+
+* [tgrants/dcm](https://github.com/tgrants/dcm) - development container manager
 
 ## Instructions
 
@@ -52,8 +63,14 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 	* Install sudo and python for Ansible `apt install sudo python3`
 	* Add user to sudoers `adduser user sudo`
 	* Copy key by SSH-ing into the VM `ssh user@192.168.x.y`
-* Setup the VM `ansible-playbook playbooks/setup.yml`
-	* Edit `group_vars` to customize your setup
+* Setup the VM
+	* Copy and adjust the hosts file `cp hosts.example hosts`
+		* Replace VM_IP_ADDRESS with the ip from the previous step
+	* Edit files to customize your setup
+		* [group_vars/](group_vars/) - basic settings
+		* [roles/base/](roles/base/) - base packages and configuration, included scripts
+		* [roles/dev/](roles/dev/) - development tool configuration
+	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
 
 #### Telemetry
 

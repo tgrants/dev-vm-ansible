@@ -14,7 +14,7 @@ scripts:
     Description: "Installs and prepares Github cli"
   - Name: install-mariadb
     Description: "Installs mariadb and php-mysql"
-  - Name: install-node-npm
-    Description: "Installs node.js and npm"
-  - Name: reset-theme
-    Description: "Resets the XFCE theme to default"
+# - Name: install-node-npm
+#   Description: "Installs node.js and npm"
+# - Name: reset-theme
+#   Description: "Resets the XFCE theme to default"
