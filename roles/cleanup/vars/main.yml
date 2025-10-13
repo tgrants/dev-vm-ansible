@@ -14,5 +14,6 @@ unnecessary_packages:
   - tasksel
   - upower
   - xcvt
-  - xiccd
+# - xiccd
+  - xscreensaver
   - xserver-xorg-legacy

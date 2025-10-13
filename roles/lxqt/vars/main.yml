@@ -11,3 +11,7 @@ lxqt_packages:
   - qterminal
   - xorg
   - xinit
+
+lxqt_config:
+  - lxqt.conf
+  - panel.conf
