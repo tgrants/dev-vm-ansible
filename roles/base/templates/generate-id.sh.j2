@@ -5,13 +5,20 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2025-09-02
+# Last updated: 2025-10-20
 # File created: {{ ansible_date_time.date }}
 
-ID_FILE="/etc/dev_vm_id"
+DVM_PATH=${1:-"/etc/dvm"}
+ID_FILE_NAME=${1:-"id"}
+ID_FILE="${DVM_PATH%/}/$ID_FILE_NAME"
+
+echo "Generating ID at ${ID_FILE}"
 
 if [ ! -f "$ID_FILE" ]; then
+	mkdir -p $DVM_PATH
 	uuidgen > "$ID_FILE"
 	chmod 644 "$ID_FILE"
 	chown root:root "$ID_FILE"
 fi
+
+echo "Done."

@@ -28,9 +28,9 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 
 If you don't require a custom configuration, you can use one of these virtual machines.
 
-| Name | Date | Link |
-|---|---|---|
-| dvm_v6 | TBD | TBD |
+| Name | Size, GiB | Size (compressed), GiB | Date | Link |
+|---|---|---|---|---|
+| dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 
 ### Similar projects
 
@@ -80,22 +80,20 @@ If you don't require a custom configuration, you can use one of these virtual ma
 
 * Remove all unnecessary files `ansible-playbook playbooks/cleanup.yml`
 * On VM, run `clear-tmp` and `clear-disk`, then shut it down
-* On host, run `vboxmanage modifymedium /mnt/storage/VBOX/phpdev/phpdev.vdi --compact`
+* On host, run `vboxmanage modifymedium /mnt/storage/VBOX/dev_vm/dev_vm.vdi --compact`
 	* Edit this path to match your .vdi file
 
 ## Updates
 
 It is recommended to run new versions of these playbooks on a fresh Debian install.
-However, in most cases, re-running them should work without issues.
+Re-running them should work most of the time, but may occaisonally cause issues.
 
 For details on changes, check the [Releases](https://github.com/tgrants/dev-vm-ansible/releases) page on GitHub.
 
 ## Contributing
 
 Before submitting a pull request, please discuss your proposed changes in an issue first.
-Major changes are generally not accepted, as this project is customized for my requirements.
-For such changes it is recommended to create your own fork of this project.
-However, feel free to open an issue if you encounter a problem or have any questions.
+Feel free to open an issue if you encounter a problem or have any questions.
 
 ## License
 

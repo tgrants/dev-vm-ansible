@@ -15,3 +15,10 @@ lxqt_packages:
 lxqt_config:
   - lxqt.conf
   - panel.conf
+
+# 'files' ar copied to their destination
+files:
+  - Name: TextViewer.desktop
+    Dest: /usr/share/applications/TextViewer.desktop
+  - Name: mimeapps.list
+    Dest: /home/{{ username }}/.config/mimeapps.list

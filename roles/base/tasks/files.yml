@@ -1,5 +1,14 @@
 ---
 
+- name: Create dvm directory
+  file:
+    path: "/etc/dvm"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  become: true
+
 - name: Create Desktop directory
   file:
     path: "/home/{{ username }}/Desktop"
@@ -31,3 +40,10 @@
     dest: "/usr/local/bin/{{ item.Name }}"
     mode: "0755"
   loop: "{{ scripts }}"
+
+- name: Create scripts from templates into /usr/local/sbin
+  ansible.builtin.template:
+    src: "{{ item.Name }}.sh.j2"
+    dest: "/usr/local/sbin/{{ item.Name }}"
+    mode: "0755"
+  loop: "{{ su_scripts }}"

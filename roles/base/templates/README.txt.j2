@@ -18,9 +18,11 @@ Next steps:
   - Run any necessary scripts (see the list below)
   - Create your projects in the ~/Projects directory
 
-Scripts (located in /usr/local/bin):
+Scripts:
 {% for script in scripts | selectattr("Description", "defined") %}
   - {{ script.Name }} ({{ script.Description }})
 {% endfor %}
 
 Good luck!
+
+Press 'q' to close window if using 'less'

@@ -5,11 +5,11 @@ packages:
   - wget
 
 # Scripts without a description are not added to the README
+# 'scripts' are copied to /usr/local/bin
 scripts:
   - Name: clear-disk
     Description: "Zeroes the disk"
   - Name: clear-tmp
-  - Name: generate-id
   - Name: install-github-cli
     Description: "Installs and prepares Github cli"
   - Name: install-mariadb
@@ -18,3 +18,7 @@ scripts:
 #   Description: "Installs node.js and npm"
 # - Name: reset-theme
 #   Description: "Resets the XFCE theme to default"
+
+# 'su_scripts' are copied to /usr/local/sbin
+su_scripts:
+  - Name: generate-id

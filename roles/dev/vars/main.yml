@@ -2,7 +2,6 @@ packages:
 # General purpose
   - firefox-esr
   - git
-  - mousepad # Visual text editor
   - python3 # Should already exist to use ansible
 # PHP
   - php

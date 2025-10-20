@@ -42,3 +42,14 @@
     dest: "/home/{{ username }}/.config/lxqt/{{ item }}"
     mode: "0644"
   loop: "{{ lxqt_config }}"
+
+- name: Copy files to their destinations
+  ansible.builtin.copy:
+    src: "{{ item.Name }}"
+    dest: "{{ item.Dest }}"
+    mode: "0644"
+  loop: "{{ files }}"
+
+- name: Make 'less' default for opening text files
+  ansible.builtin.command:
+    cmd: xdg-mime default TextViewer.desktop text/plain

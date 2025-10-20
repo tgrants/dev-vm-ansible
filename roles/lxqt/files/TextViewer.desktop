@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Text Viewer (Terminal)
+Exec=qterminal -e "less '%f'"
+MimeType=text/plain;
+Terminal=false
+NoDisplay=true
