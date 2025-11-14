@@ -5,7 +5,7 @@
 # {{ source_url }}
 #
 # Last updated: 2025-05-09
-# File created: {{ ansible_date_time.date }}
+# File created: {{ ansible_facts.date_time.date }}
 
 echo "Creating bigemptyfile"
 sudo dd if=/dev/zero of=/bigemptyfile bs=4096k status=progress

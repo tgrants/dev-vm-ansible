@@ -5,7 +5,7 @@
 # {{ source_url }}
 #
 # Last updated: 2025-05-09
-# File created: {{ ansible_date_time.date }}
+# File created: {{ ansible_facts.date_time.date }}
 
 sudo apt install gh
 
@@ -15,4 +15,3 @@ confirm=${confirm,,}
 if [[ "$confirm" =~ ^(y|yes)$ ]]; then
 	gh auth login
 fi
-

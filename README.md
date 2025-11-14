@@ -38,6 +38,12 @@ If you don't require a custom configuration, you can use one of these virtual ma
 
 ## Instructions
 
+### Control machine
+
+To run the playbook, you need to install Ansible on your control machine.
+
+* Arch linux: `sudo pacman -S ansible`
+
 ### Virtualbox
 
 #### Create the virtual machine
@@ -55,7 +61,7 @@ If you don't require a custom configuration, you can use one of these virtual ma
 		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
 		* Manually create a single bootable ext4 partition for a swapless setup
 	* Software selection - select only `SSH server`
-* Prepare the VM for ansible (after booting it for the first time)
+* Prepare the VM for Ansible (after booting it for the first time)
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
 	* Log in as root `su -`
 	* Restart network service `systemctl restart networking`
@@ -70,6 +76,7 @@ If you don't require a custom configuration, you can use one of these virtual ma
 		* [group_vars/](group_vars/) - basic settings
 		* [roles/base/](roles/base/) - base packages and configuration, included scripts
 		* [roles/dev/](roles/dev/) - development tool configuration
+		* [roles/lxqt/](roles/lxqt/) - LXQt and GUI configuration
 	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
 
 #### Telemetry

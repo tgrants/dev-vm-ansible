@@ -2,9 +2,8 @@
 
 - name: Install LXQt packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ lxqt_packages }}"
     state: present
-  loop: "{{ lxqt_packages }}"
   become: true
 
 - name: Deploy .xinitrc

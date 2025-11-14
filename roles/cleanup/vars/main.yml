@@ -1,15 +1,12 @@
 unnecessary_packages:
-  - alsa-topology-conf
-  - alsa-ucm-conf
   - avahi-daemon
 #  - gnome-accessibility-themes
 #  - ipp-usb
+  - laptop-detect
   - libgphoto2-l10n
   - libldap-common
 #  - libwebrtc-audio-processing1
   - mesa-vulkan-drivers
-  - pulseaudio
-  - pulseaudio-utils
 #  - sane-airscan
   - tasksel
   - upower
@@ -17,3 +14,14 @@ unnecessary_packages:
 # - xiccd
   - xscreensaver
   - xserver-xorg-legacy
+# Audio & multimedia
+  - alsa-topology-conf
+  - alsa-ucm-conf
+  - pipewire
+  - pulseaudio
+  - pulseaudio-utils
+  - wireplumber
+# Storage
+  - dosfstools
+  - ntfs-3g
+

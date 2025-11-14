@@ -2,9 +2,8 @@
 
 - name: Remove unnecessary packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ unnecessary_packages }}""
     state: absent
-  loop: "{{ unnecessary_packages }}"
   become: true
 
 - name: Clean APT cache

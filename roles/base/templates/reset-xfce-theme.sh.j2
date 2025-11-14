@@ -5,7 +5,7 @@
 # {{ source_url }}
 #
 # Last updated: 2025-05-29
-# File created: {{ ansible_date_time.date }}
+# File created: {{ ansible_facts.date_time.date }}
 
 xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita"
