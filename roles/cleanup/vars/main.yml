@@ -1,19 +1,10 @@
 unnecessary_packages:
-  - avahi-daemon
-#  - gnome-accessibility-themes
-#  - ipp-usb
   - laptop-detect
   - libgphoto2-l10n
   - libldap-common
-#  - libwebrtc-audio-processing1
-  - mesa-vulkan-drivers
-#  - sane-airscan
   - tasksel
   - upower
-  - xcvt
-# - xiccd
-  - xscreensaver
-  - xserver-xorg-legacy
+  - qlipper
 # Audio & multimedia
   - alsa-topology-conf
   - alsa-ucm-conf
@@ -21,7 +12,25 @@ unnecessary_packages:
   - pulseaudio
   - pulseaudio-utils
   - wireplumber
-# Storage
+# Graphics
+  - mesa-vulkan-drivers
+  - xcvt
+  - xscreensaver
+  - xserver-xorg-legacy
+  - xserver-xorg-video-amdgpu
+  - xserver-xorg-video-fbdev
+  - xserver-xorg-video-intel
+  - xserver-xorg-video-nouveau
+  - xserver-xorg-video-qxl
+  - xserver-xorg-video-radeon
+# Locales & language
+  - ispell
+# Networking
+  - avahi-daemon
+  - nftables
+# Storage & filesystem
   - dosfstools
+  - eject
+  - exfatprogs
   - ntfs-3g
-
+  - udisks2

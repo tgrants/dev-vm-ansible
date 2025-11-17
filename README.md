@@ -31,6 +31,11 @@ If you don't require a custom configuration, you can use one of these virtual ma
 | Name | Size, GiB | Size (compressed), GiB | Date | Link |
 |---|---|---|---|---|
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
+| dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
+| dvm_v3.tar.xz [1][2] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
+
+[1] Virtual Disk Image only  
+[2] Password is 'changeme'
 
 ### Similar projects
 
@@ -60,7 +65,7 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Partition disks
 		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
 		* Manually create a single bootable ext4 partition for a swapless setup
-	* Software selection - select only `SSH server`
+	* Software selection - select only `SSH server`, deselect everything else
 * Prepare the VM for Ansible (after booting it for the first time)
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
 	* Log in as root `su -`
@@ -93,7 +98,7 @@ To run the playbook, you need to install Ansible on your control machine.
 ## Updates
 
 It is recommended to run new versions of these playbooks on a fresh Debian install.
-Re-running them should work most of the time, but may occaisonally cause issues.
+Re-running them should work most of the time, but may occasionally cause issues.
 
 For details on changes, check the [Releases](https://github.com/tgrants/dev-vm-ansible/releases) page on GitHub.
 

@@ -1,9 +1,17 @@
 ---
 
+- name: Disable apache2
+  ansible.builtin.systemd:
+    name: apache2
+    state: stopped
+    enabled: false
+  become: true
+
 - name: Remove unnecessary packages
   ansible.builtin.apt:
-    name: "{{ unnecessary_packages }}""
+    name: "{{ unnecessary_packages }}"
     state: absent
+    purge: true
   become: true
 
 - name: Clean APT cache
@@ -11,4 +19,5 @@
     autoclean: true
     autoremove: true
     clean: true
+    purge: true
   become: true
