@@ -36,14 +36,14 @@
 
 - name: Create scripts from templates into /usr/local/bin
   ansible.builtin.template:
-    src: "{{ item.Name }}.sh.j2"
+    src: "{{ item.Name }}{{ item.Extension }}.j2"
     dest: "/usr/local/bin/{{ item.Name }}"
     mode: "0755"
   loop: "{{ scripts }}"
 
 - name: Create scripts from templates into /usr/local/sbin
   ansible.builtin.template:
-    src: "{{ item.Name }}.sh.j2"
+    src: "{{ item.Name }}{{ item.Extension }}.j2"
     dest: "/usr/local/sbin/{{ item.Name }}"
     mode: "0755"
   loop: "{{ su_scripts }}"

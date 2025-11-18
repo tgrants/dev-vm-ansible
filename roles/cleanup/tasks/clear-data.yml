@@ -29,3 +29,9 @@
     path: "{{ item.path }}"
     state: absent
   loop: "{{ desktop_files.files }}"
+
+- name: Remove VM ID
+  file:
+    path: "/etc/dvm/id"
+    state: absent
+  become: true

@@ -2,12 +2,14 @@
 
 - name: Create cron job for generating id at boot
   cron:
-    job: "/usr/local/bin/generate-id.sh"
+    name: "Generate VM ID"
+    job: "/usr/local/bin/generate-id"
     user: root
     special_time: reboot
 
 - name: Create cron job for telemetry script
   cron:
-    job: "/usr/local/bin/combine.py"
+    name: "Run combine"
+    job: "/usr/local/bin/combine"
     user: root
     minute: "*/10"

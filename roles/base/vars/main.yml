@@ -1,5 +1,6 @@
 packages:
   - gpg
+  - python3-requests
   - unzip
   - uuid-runtime
   - wget
@@ -8,11 +9,17 @@ packages:
 # 'scripts' are copied to /usr/local/bin
 scripts:
   - Name: clear-disk
+    Extension: .sh
     Description: "Zeroes the disk"
   - Name: clear-tmp
+    Extension: .sh
+  - Name: combine
+    Extension: .py
   - Name: install-github-cli
+    Extension: .sh
     Description: "Installs and prepares Github cli"
   - Name: install-mariadb
+    Extension: .sh
     Description: "Installs mariadb and php-mysql"
 # - Name: install-node-npm
 #   Description: "Installs node.js and npm"
@@ -22,3 +29,4 @@ scripts:
 # 'su_scripts' are copied to /usr/local/sbin
 su_scripts:
   - Name: generate-id
+    Extension: .sh

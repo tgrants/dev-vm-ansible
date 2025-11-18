@@ -1,6 +1,11 @@
+# Language overrides
+# https://github.com/github-linguist/linguist/blob/main/docs/overrides.md
+
 # Add YAML as a language
-*.yml linguist-language=YAML
-*.yaml linguist-language=YAML
+*.yml linguist-detectable
+*.yaml linguist-detectable
 
 # Add Jinja as a language
+*.py.j2 linguist-language=Python
+*.sh.j2 linguist-language=Shell
 *.j2 linguist-language=Jinja

@@ -8,7 +8,6 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
 * ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
-* 🟡 **Telemetry** (opt-out, planned)
 
 ### Tools
 
@@ -26,9 +25,9 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 
 ## Download
 
-If you don't require a custom configuration, you can use one of these virtual machines.
+If you don't require a custom configuration, you can use one of these premade virtual machines.
 
-| Name | Size, GiB | Size (compressed), GiB | Date | Link |
+| Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 | dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
@@ -85,6 +84,16 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
 
 #### Telemetry
+
+Telemetry is enabled on the premade VMs.
+
+The following data is collected:
+* public_ip
+* timestamp
+* id
+* version
+
+To disable it, log in as root `su -` and remove it from cron `crontab -e`.
 
 * Add telemetry `ansible-playbook playbooks/telemetry.yml`
 
