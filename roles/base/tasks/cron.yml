@@ -3,7 +3,7 @@
 - name: Create cron job for generating id at boot
   cron:
     name: "Generate VM ID"
-    job: "/usr/local/bin/generate-id"
+    job: "/usr/local/sbin/generate-id"
     user: root
     special_time: reboot
 

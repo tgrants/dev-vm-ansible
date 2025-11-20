@@ -9,6 +9,13 @@
     mode: "0755"
   become: true
 
+- name: Create combine config
+  ansible.builtin.template:
+    src: "combine.conf.j2"
+    dest: "/etc/dvm/combine.conf"
+    mode: "0766"
+  become: true
+
 - name: Create Desktop directory
   file:
     path: "/home/{{ username }}/Desktop"

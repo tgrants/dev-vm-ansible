@@ -26,15 +26,21 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 ## Download
 
 If you don't require a custom configuration, you can use one of these premade virtual machines.
+It is recommended to use the latest available version.
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 | dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
 | dvm_v3.tar.xz [1][2] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
 
 [1] Virtual Disk Image only  
 [2] Password is 'changeme'
+
+> [!NOTE]
+>
+> Older versions will be different - make sure you follow the corresponding version of the docs.
 
 ### Similar projects
 
@@ -46,7 +52,7 @@ If you don't require a custom configuration, you can use one of these premade vi
 
 To run the playbook, you need to install Ansible on your control machine.
 
-* Arch linux: `sudo pacman -S ansible`
+* [Arch linux](https://wiki.archlinux.org/title/Ansible)
 
 ### Virtualbox
 
@@ -63,7 +69,10 @@ To run the playbook, you need to install Ansible on your control machine.
 		* Create `user` with password `pass`
 	* Partition disks
 		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
-		* Manually create a single bootable ext4 partition for a swapless setup
+		* Manually create a single partition for a swapless setup
+			* Use as: Ext4 journaling file system
+			* Mount point: /
+			* Bootable flag: on
 	* Software selection - select only `SSH server`, deselect everything else
 * Prepare the VM for Ansible (after booting it for the first time)
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
@@ -72,7 +81,7 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Get the ip address with `ip a` and update [`hosts`](hosts) in this repository
 	* Install sudo and python for Ansible `apt install sudo python3`
 	* Add user to sudoers `adduser user sudo`
-	* Copy key by SSH-ing into the VM `ssh user@192.168.x.y`
+	* Copy key by SSH-ing into the VM `ssh user@w.x.y.z`
 * Setup the VM
 	* Copy and adjust the hosts file `cp hosts.example hosts`
 		* Replace VM_IP_ADDRESS with the ip from the previous step
@@ -82,25 +91,21 @@ To run the playbook, you need to install Ansible on your control machine.
 		* [roles/dev/](roles/dev/) - development tool configuration
 		* [roles/lxqt/](roles/lxqt/) - LXQt and GUI configuration
 	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
+		* The vscode install check may throw an error when run for the first time
+		* If missing lxqt directories cause errors, reboot and rerun the playbook
 
 #### Telemetry
 
 Telemetry is enabled on the premade VMs.
+Settings are defined in [`combine.conf`](roles/base/templates/combine.conf.j2).
+You can enable and disable it by running `combine on/off` or editing the config manually.
 
-The following data is collected:
-* public_ip
-* timestamp
-* id
-* version
-
-To disable it, log in as root `su -` and remove it from cron `crontab -e`.
-
-* Add telemetry `ansible-playbook playbooks/telemetry.yml`
+The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
 #### Trim virtual disk
 
 * Remove all unnecessary files `ansible-playbook playbooks/cleanup.yml`
-* On VM, run `clear-tmp` and `clear-disk`, then shut it down
+* On VM, run `clear-disk`, then shut it down
 * On host, run `vboxmanage modifymedium /mnt/storage/VBOX/dev_vm/dev_vm.vdi --compact`
 	* Edit this path to match your .vdi file
 

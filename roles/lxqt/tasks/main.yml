@@ -52,3 +52,12 @@
 - name: Make 'less' default for opening text files
   ansible.builtin.command:
     cmd: xdg-mime default TextViewer.desktop text/plain
+
+- name: Set visible desktop shortcuts
+  ansible.builtin.ini_file:
+    path: "/home/{{ username }}/.config/pcmanfm-qt/lxqt/settings.conf"
+    section: "Desktop"
+    option: "DesktopShortcuts"
+    value: "Home"
+    create: true
+    mode: "0644"

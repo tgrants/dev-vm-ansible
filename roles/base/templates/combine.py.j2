@@ -4,16 +4,17 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2025-11-18
+# Last updated: 2025-11-20
 # File created: {{ ansible_facts.date_time.date }}
 
+import argparse
+import configparser
 import json
 import requests
+import time
 
 DVM_ID_PATH = "/etc/dvm/id"
-DVM_VERSION = "{{ version }}"
-DVM_TELSERV = "{{ telemetry_url }}"
-DVM_TIMEOUT = 10
+DVM_TELCONF = "/etc/dvm/combine.conf"
 
 
 def get_id():
@@ -22,21 +23,21 @@ def get_id():
 		return f.read().strip()
 
 
-def send():
+def send(url, timeout, version):
 	payload = {
 		"id": get_id(),
-		"version": DVM_VERSION,
-		"available_storage": 0,
+		"version": version,
+		"time": time.time(),
 	}
 	headers = {
 		"Content-Type": "application/json",
 	}
 	try:
 		r = requests.post(
-			DVM_TELSERV,
+			url,
 			data=json.dumps(payload),
 			headers=headers,
-			timeout=DVM_TIMEOUT
+			timeout=timeout,
 		)
 		print(r.status_code)
 	except Exception as e:
@@ -44,4 +45,33 @@ def send():
 
 
 if __name__ == "__main__":
-	send()
+	parser = argparse.ArgumentParser(prog="combine")
+	parser.add_argument("toggle", nargs="?", default="send", help="Toggle telemetry <on> or <off>")
+	args = parser.parse_args()
+
+	config = configparser.ConfigParser()
+	config.read(DVM_TELCONF)
+	update_config = False
+
+	match args.toggle:
+		case "send":
+			if config["Settings"]["Enabled"] == "True":
+				send(
+					config["Settings"]["Server"],
+					int(config["Settings"]["Timeout"]),
+					config["Settings"]["Version"],
+				)
+			else:
+				print("Combine disabled")
+		case "on":
+			config["Settings"]['Enabled'] = "True"
+			update_config = True
+		case "off":
+			config["Settings"]['Enabled'] = "False"
+			update_config = True
+		case _:
+			parser.print_help()
+	
+	if update_config:
+		with open(DVM_TELCONF, 'w') as configfile:
+			config.write(configfile)

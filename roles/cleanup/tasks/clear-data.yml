@@ -18,18 +18,6 @@
     state: absent
   become: true
 
-- name: Find all .desktop files on Desktop
-  ansible.builtin.find:
-    paths: "/home/{{ username }}/Desktop"
-    patterns: "*.desktop"
-  register: desktop_files
-
-- name: Delete matched .desktop files
-  ansible.builtin.file:
-    path: "{{ item.path }}"
-    state: absent
-  loop: "{{ desktop_files.files }}"
-
 - name: Remove VM ID
   file:
     path: "/etc/dvm/id"
