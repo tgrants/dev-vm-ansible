@@ -11,8 +11,8 @@ scripts:
   - Name: clear-disk
     Extension: .sh
     Description: "Zeroes the disk"
-  - Name: clear-tmp
-    Extension: .sh
+# - Name: clear-tmp
+#   Extension: .sh
   - Name: combine
     Extension: .py
   - Name: install-github-cli

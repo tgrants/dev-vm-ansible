@@ -11,13 +11,14 @@ lxqt_packages:
   - qterminal
   - xorg
   - xinit
+  - papirus-icon-theme
 
-lxqt_config:
-  - lxqt.conf
-  - panel.conf
-
-# 'files' ar copied to their destination
+# 'files' are copied to their destination
 files:
+  - Name: lxqt.conf
+    Dest: /home/{{ username }}/.config/lxqt/lxqt.conf
+  - Name: panel.conf
+    Dest: /home/{{ username }}/.config/lxqt/panel.conf
   - Name: TextViewer.desktop
     Dest: /usr/share/applications/TextViewer.desktop
   - Name: mimeapps.list

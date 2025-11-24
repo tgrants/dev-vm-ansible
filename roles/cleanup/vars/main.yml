@@ -1,22 +1,8 @@
 unnecessary_packages:
   - laptop-detect
-  - libgphoto2-l10n
-  - libldap-common
   - tasksel
-  - upower
-  - qlipper
-# Audio & multimedia
-  - alsa-topology-conf
-  - alsa-ucm-conf
-  - pipewire
-  - pulseaudio
-  - pulseaudio-utils
-  - wireplumber
 # Graphics
   - mesa-vulkan-drivers
-  - xcvt
-  - xscreensaver
-  - xserver-xorg-legacy
   - xserver-xorg-video-amdgpu
   - xserver-xorg-video-fbdev
   - xserver-xorg-video-intel
@@ -26,11 +12,6 @@ unnecessary_packages:
 # Locales & language
   - ispell
 # Networking
-  - avahi-daemon
   - nftables
 # Storage & filesystem
-  - dosfstools
   - eject
-  - exfatprogs
-  - ntfs-3g
-  - udisks2

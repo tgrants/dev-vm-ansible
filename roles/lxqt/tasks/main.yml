@@ -4,6 +4,7 @@
   ansible.builtin.apt:
     name: "{{ lxqt_packages }}"
     state: present
+    install_recommends: false
   become: true
 
 - name: Deploy .xinitrc
@@ -35,23 +36,34 @@
     mode: '0644'
   notify: Reload systemd
 
-- name: Copy lxqt configuration files
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "/home/{{ username }}/.config/lxqt/{{ item }}"
-    mode: "0644"
-  loop: "{{ lxqt_config }}"
+- name: Ensure lxqt config directory exists
+  file:
+    path: /home/{{ username }}/.config/lxqt/
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0755'
 
 - name: Copy files to their destinations
   ansible.builtin.copy:
     src: "{{ item.Name }}"
     dest: "{{ item.Dest }}"
-    mode: "0644"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0644'
   loop: "{{ files }}"
 
 - name: Make 'less' default for opening text files
   ansible.builtin.command:
     cmd: xdg-mime default TextViewer.desktop text/plain
+
+- name: Ensure pcmanfm-qt/lxqt config directory exists
+  file:
+    path: /home/{{ username }}/.config/pcmanfm-qt/lxqt/
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0755'
 
 - name: Set visible desktop shortcuts
   ansible.builtin.ini_file:
@@ -60,4 +72,6 @@
     option: "DesktopShortcuts"
     value: "Home"
     create: true
-    mode: "0644"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0755'

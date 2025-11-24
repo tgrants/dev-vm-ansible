@@ -30,6 +30,7 @@ It is recommended to use the latest available version.
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v7-dev.2.tar.xz | 2.97 | 0.68 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
 | dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 | dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
@@ -62,26 +63,37 @@ To run the playbook, you need to install Ansible on your control machine.
 	* At least 2 GiB RAM is recommended for using an IDE and a browser at the same time
 	* A 20 GB VDI disk should be enough, adjust for your requirements
 * Install [Debian 13](https://www.debian.org/)
-	* Select `en_US.UTF-8 locale`
-	* Set the hostname e.g. *devvm*
+	* In the installer menu, press `TAB` and add `expert priority=low`
+	* Choose language `en_US.UTF-8 locale`
+	* Load installer components from installation media
+	* Configure the network
+		* Set the hostname e.g. *devvm*
+	* Set up users and passwords
 	* Create users (or update [`hosts`](hosts))
-		* Set root password to `pass`
+		* Create a root user with password `pass`, allow login as root`
 		* Create `user` with password `pass`
-	* Partition disks
+	* Configure the clock
+	* Detect and partition disks
 		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
 		* Manually create a single partition for a swapless setup
+			* Partition table type - msdos
 			* Use as: Ext4 journaling file system
 			* Mount point: /
 			* Bootable flag: on
-	* Software selection - select only `SSH server`, deselect everything else
+	* Install the base system
+		* Drivers to include in initrd: targeted
+	* Configure the package manager
+	* Install the GRUB boot loader
+	* Select and install software
+		* Select only `SSH server`, deselect everything else
 * Prepare the VM for Ansible (after booting it for the first time)
+	* Log in as root
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
-	* Log in as root `su -`
 	* Restart network service `systemctl restart networking`
 	* Get the ip address with `ip a` and update [`hosts`](hosts) in this repository
 	* Install sudo and python for Ansible `apt install sudo python3`
 	* Add user to sudoers `adduser user sudo`
-	* Copy key by SSH-ing into the VM `ssh user@w.x.y.z`
+	* Copy key by SSH-ing into the VM from the control machine `ssh user@ip_address`
 * Setup the VM
 	* Copy and adjust the hosts file `cp hosts.example hosts`
 		* Replace VM_IP_ADDRESS with the ip from the previous step
@@ -93,6 +105,7 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
 		* The vscode install check may throw an error when run for the first time
 		* If missing lxqt directories cause errors, reboot and rerun the playbook
+	* Reboot
 
 #### Telemetry
 
