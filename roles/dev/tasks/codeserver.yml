@@ -1,0 +1,32 @@
+---
+
+- name: Install Code Server
+  vars:
+    code_server_pkg: "code-server_{{ code_server_version }}_amd64.deb"
+    code_server_url: "https://github.com/coder/code-server/releases/download/v{{ code_server_version }}/{{ code_server_pkg }}"
+
+  block:
+
+    - name: Check if code-server is installed
+      command: code-server --version
+      register: cs_installed
+      ignore_errors: true
+      changed_when: false
+
+    - name: Download code-server package
+      get_url:
+        url: "{{ code_server_url }}"
+        dest: "/tmp/{{ code_server_pkg }}"
+        mode: "0644"
+      when: cs_installed.rc != 0
+
+    - name: Install code-server package
+      apt:
+        deb: "/tmp/{{ code_server_pkg }}"
+      when: cs_installed.rc != 0
+
+    - name: Enable and start code-server service for current user
+      systemd:
+        name: "code-server@{{ username }}"
+        enabled: true
+        state: started

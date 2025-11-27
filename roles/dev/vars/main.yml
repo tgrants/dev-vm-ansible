@@ -16,3 +16,6 @@ packages:
 # Sqlite
   - sqlite3
   - php-sqlite3
+
+# VS Code Server
+code_server_version: 4.106.2

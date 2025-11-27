@@ -3,3 +3,4 @@
 - include_tasks: install.yml
 - include_tasks: composer.yml
 - include_tasks: vscode.yml
+- include_tasks: codeserver.yml

@@ -6,27 +6,28 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 ## Features
 
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-* ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (~1 GiB when compressed)
+* ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (<1 GiB compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 
 ### Tools
 
-* [PHP](https://www.php.net/) and [Composer](https://getcomposer.org/)
-* [Python](https://www.python.org/)
-* [Sqlite3](https://sqlite.org/)
-* [VSCode](https://code.visualstudio.com/)
-* [Git](https://git-scm.com/)
-* [Firefox](https://www.firefox.com)
-
-### Install scripts
-
-* [MariaDB](https://mariadb.org/)
-* [GitHub CLI](https://cli.github.com/)
+| Category | Tools | Install scripts |
+|---|---|---|
+| **Editors** | [VSCode](https://code.visualstudio.com/), [VS Code Server](https://coder.com/docs/code-server) ||
+| **Languages** | [PHP 8.4](https://www.php.net/), [Python 3.13](https://www.python.org/) | |
+| **Databases** | [Sqlite3](https://sqlite.org/) | [MariaDB](https://mariadb.org/) |
+| **Version Control** | [Git](https://git-scm.com/) | [GitHub CLI](https://cli.github.com/) |
+| **Browsers** | [Firefox](https://www.firefox.com) | |
+| **Dependency management** | [Composer](https://getcomposer.org/) | |
 
 ## Download
 
 If you don't require a custom configuration, you can use one of these premade virtual machines.
-It is recommended to use the latest available version.
+
+> [!NOTE]
+>
+> It is recommended to use the latest available stable version.
+> Older versions could be different - make sure you follow the corresponding version of the docs.
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
@@ -38,10 +39,6 @@ It is recommended to use the latest available version.
 
 [1] Virtual Disk Image only  
 [2] Password is 'changeme'
-
-> [!NOTE]
->
-> Older versions will be different - make sure you follow the corresponding version of the docs.
 
 ### Similar projects
 
@@ -103,15 +100,14 @@ To run the playbook, you need to install Ansible on your control machine.
 		* [roles/dev/](roles/dev/) - development tool configuration
 		* [roles/lxqt/](roles/lxqt/) - LXQt and GUI configuration
 	* Run the setup playbook `ansible-playbook playbooks/setup.yml`
-		* The vscode install check may throw an error when run for the first time
-		* If missing lxqt directories cause errors, reboot and rerun the playbook
+		* Some checks may throw an error when run for the first time
 	* Reboot
 
 #### Telemetry
 
-Telemetry is enabled on the premade VMs.
+Some data is collected to estimate the amount of premade VMs in use and their versions.
 Settings are defined in [`combine.conf`](roles/base/templates/combine.conf.j2).
-You can enable and disable it by running `combine on/off` or editing the config manually.
+You can enable and disable this by running `combine on/off` or editing the config manually.
 
 The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
@@ -136,9 +132,5 @@ Feel free to open an issue if you encounter a problem or have any questions.
 
 ## License
 
-> [!NOTE]
->
-> Versions below `v4` are licensed under the terms of the [Unlicense](https://choosealicense.com/licenses/unlicense/).
-
-This project is licensed under the terms of the [MIT license](https://choosealicense.com/licenses/mit/).
+This project is licensed under the terms of the [MIT license](https://choosealicense.com/licenses/mit/) (v4+).
 See the [LICENSE](LICENSE) file for more information.
