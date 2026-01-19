@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Text Viewer (Terminal)
-Exec=qterminal -e "less '%f'"
+Exec=qterminal -e "less -P 'Enter `q` to exit.' '%f'"
 MimeType=text/plain;
 Terminal=false
 NoDisplay=true

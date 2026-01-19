@@ -6,7 +6,7 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 ## Features
 
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-* ✅ **Compact** - Initial VirtualBox disk size: **~4 GiB** (<1 GiB compressed)
+* ✅ **Compact** - Initial VirtualBox disk size: **~3 GiB** (<1 GiB compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 
 ### Tools
@@ -106,7 +106,7 @@ To run the playbook, you need to install Ansible on your control machine.
 #### Telemetry
 
 Some data is collected to estimate the amount of premade VMs in use and their versions.
-Settings are defined in [`combine.conf`](roles/base/templates/combine.conf.j2).
+Telemetry settings are defined in [`dvm.conf`](roles/base/templates/dvm.conf.j2).
 You can enable and disable this by running `combine on/off` or editing the config manually.
 
 The following data is collected: `public_ip`, `timestamp`, `id` and `version`.

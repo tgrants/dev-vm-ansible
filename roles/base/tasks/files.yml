@@ -9,11 +9,11 @@
     mode: "0755"
   become: true
 
-- name: Create combine config
+- name: Create dvm config
   ansible.builtin.template:
-    src: "combine.conf.j2"
-    dest: "/etc/dvm/combine.conf"
-    mode: "0766"
+    src: "dvm.conf.j2"
+    dest: "/etc/dvm/dvm.conf"
+    mode: '0766'
   become: true
 
 - name: Create Desktop directory

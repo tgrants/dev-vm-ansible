@@ -4,7 +4,7 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2025-11-20
+# Last updated: 2026-01-19
 # File created: {{ ansible_facts.date_time.date }}
 
 import argparse
@@ -13,19 +13,13 @@ import json
 import requests
 import time
 
-DVM_ID_PATH = "/etc/dvm/id"
-DVM_TELCONF = "/etc/dvm/combine.conf"
+CONF = "/etc/dvm/dvm.conf"
+NAME = "Combine"
 
 
-def get_id():
-	# File not found? Tuff shi unc 🥀
-	with open(DVM_ID_PATH, 'r') as f:
-		return f.read().strip()
-
-
-def send(url, timeout, version):
+def send(url, timeout, id, version):
 	payload = {
-		"id": get_id(),
+		"id": id,
 		"version": version,
 		"time": time.time(),
 	}
@@ -45,33 +39,36 @@ def send(url, timeout, version):
 
 
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(prog="combine")
+	parser = argparse.ArgumentParser(prog=NAME.lower())
 	parser.add_argument("toggle", nargs="?", default="send", help="Toggle telemetry <on> or <off>")
 	args = parser.parse_args()
 
 	config = configparser.ConfigParser()
-	config.read(DVM_TELCONF)
+	config.read(CONF)
 	update_config = False
 
 	match args.toggle:
 		case "send":
-			if config["Settings"]["Enabled"] == "True":
+			if not config.has_option("Global", "Id"):
+				print("No UUID")
+			else if config.getboolean(NAME, "Enabled"):
 				send(
-					config["Settings"]["Server"],
-					int(config["Settings"]["Timeout"]),
-					config["Settings"]["Version"],
+					config[NAME]["Server"],
+					int(config[NAME]["Timeout"]),
+					config["Global"]["Id"],
+					config["Global"]["Version"],
 				)
 			else:
 				print("Combine disabled")
 		case "on":
-			config["Settings"]['Enabled'] = "True"
+			config[NAME]['Enabled'] = "True"
 			update_config = True
 		case "off":
-			config["Settings"]['Enabled'] = "False"
+			config[NAME]['Enabled'] = "False"
 			update_config = True
 		case _:
 			parser.print_help()
 	
 	if update_config:
-		with open(DVM_TELCONF, 'w') as configfile:
+		with open(CONF, 'w') as configfile:
 			config.write(configfile)

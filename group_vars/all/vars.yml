@@ -1,3 +1,4 @@
 username: user
-version: "7-dev.3"
+password: pass
+version: "7-dev.4"
 source_url: "https://github.com/tgrants/dev-vm-ansible"

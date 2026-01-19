@@ -5,20 +5,21 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2025-10-20
+# Last updated: 2026-01-19
 # File created: {{ ansible_facts.date_time.date }}
 
 DVM_PATH=${1:-"/etc/dvm"}
-ID_FILE_NAME=${1:-"id"}
-ID_FILE="${DVM_PATH%/}/$ID_FILE_NAME"
+CONF_FILE_NAME=${2:-"dvm.conf"}
+CONF_FILE="${DVM_PATH%/}/$CONF_FILE_NAME"
 
-echo "Generating ID at ${ID_FILE}"
+echo "Generating ID in ${CONF_FILE}"
 
-if [ ! -f "$ID_FILE" ]; then
-	mkdir -p $DVM_PATH
-	uuidgen > "$ID_FILE"
-	chmod 644 "$ID_FILE"
-	chown root:root "$ID_FILE"
+if grep -q "^Id =" "$CONF_FILE"
+then
+	echo "File already has an Id."
+else
+	uuid=$(uuidgen)
+	sed -i "/^\[Global\]$/a Id = $uuid" "$CONF_FILE"
 fi
 
 echo "Done."
