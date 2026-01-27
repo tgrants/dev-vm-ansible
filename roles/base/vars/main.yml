@@ -15,6 +15,9 @@ scripts:
 #   Extension: .sh
   - Name: combine
     Extension: .py
+  - Name: dvmconf
+    Extension: .py
+    Description: "Edits dvm settings"
   - Name: install-github-cli
     Extension: .sh
     Description: "Installs and prepares Github cli"
@@ -27,6 +30,6 @@ scripts:
 #   Description: "Resets the XFCE theme to default"
 
 # 'su_scripts' are copied to /usr/local/sbin
-su_scripts:
-  - Name: generate-id
-    Extension: .sh
+su_scripts: []
+# - Name: generate-id
+#   Extension: .sh

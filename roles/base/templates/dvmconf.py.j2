@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+# This script provides commands to edit dvm.conf
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2026-01-27
+# File created: {{ ansible_facts.date_time.date }}
+
+import argparse
+import configparser
+
+CONF = "/etc/dvm/dvm.conf"
+
+
+def set_section(args, default="Global"):
+	if not args.section:
+		args.section = default
+	else:
+		args.section = args.section.capitalize()
+
+
+def set_config_update(value=True):
+	global update_config
+	update_config = value
+
+
+def create_key(args):
+	set_section(args)
+	if config.get(args.section, args.key, fallback=None):
+		print("Key already exists")
+	else:
+		config[args.section][args.key] = args.value
+		set_config_update()
+
+
+def delete_key(args):
+	set_section(args)
+	if config.remove_option(args.section, args.key):
+		set_config_update()
+	else:
+		print("Key not found")
+
+
+def set_key(args):
+	set_section(args)
+	if config.get(args.section, args.key, fallback=None):
+		config[args.section][args.key] = args.value
+		set_config_update()
+	else:
+		print("Key not found")
+
+
+def get_key(args):
+	set_section(args)
+	result = config.get(args.section, args.key, fallback=None)
+	if result:
+		print(result)
+
+
+if __name__ == "__main__":
+	config = configparser.ConfigParser()
+	config.read(CONF)
+	update_config = False
+
+	parser = argparse.ArgumentParser()
+	subparsers = parser.add_subparsers()
+
+	parser_create = subparsers.add_parser("create")
+	parser_create.add_argument('section', nargs="?")
+	parser_create.add_argument('key')
+	parser_create.add_argument('value')
+	parser_create.set_defaults(func=create_key)
+
+	parser_delete = subparsers.add_parser("delete")
+	parser_delete.add_argument('section', nargs="?")
+	parser_delete.add_argument('key')
+	parser_delete.set_defaults(func=delete_key)
+
+	parser_set = subparsers.add_parser("set")
+	parser_set.add_argument('section', nargs="?")
+	parser_set.add_argument('key')
+	parser_set.add_argument('value')
+	parser_set.set_defaults(func=set_key)
+
+	parser_get = subparsers.add_parser("get")
+	parser_get.add_argument('section', nargs="?")
+	parser_get.add_argument('key')
+	parser_get.set_defaults(func=get_key)
+
+	args = parser.parse_args()
+	args.func(args)
+
+	if update_config:
+		with open(CONF, 'w') as configfile:
+			config.write(configfile)

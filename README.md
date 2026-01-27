@@ -107,7 +107,7 @@ To run the playbook, you need to install Ansible on your control machine.
 
 Some data is collected to estimate the amount of premade VMs in use and their versions.
 Telemetry settings are defined in [`dvm.conf`](roles/base/templates/dvm.conf.j2).
-You can enable and disable this by running `combine on/off` or editing the config manually.
+You can enable and disable this by running `dvmconf set combine enabled false` or editing the config manually.
 
 The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
@@ -122,6 +122,7 @@ The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
 It is recommended to run new versions of these playbooks on a fresh Debian install.
 Re-running them should work most of the time, but may occasionally cause issues.
+Backwards compatibility with user-made tools is not guaranteed.
 
 For details on changes, check the [Releases](https://github.com/tgrants/dev-vm-ansible/releases) page on GitHub.
 

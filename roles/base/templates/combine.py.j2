@@ -4,14 +4,12 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-01-19
+# Last updated: 2026-01-27
 # File created: {{ ansible_facts.date_time.date }}
 
-import argparse
 import configparser
 import json
 import requests
-import time
 
 CONF = "/etc/dvm/dvm.conf"
 NAME = "Combine"
@@ -21,7 +19,6 @@ def send(url, timeout, id, version):
 	payload = {
 		"id": id,
 		"version": version,
-		"time": time.time(),
 	}
 	headers = {
 		"Content-Type": "application/json",
@@ -39,35 +36,21 @@ def send(url, timeout, id, version):
 
 
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(prog=NAME.lower())
-	parser.add_argument("toggle", nargs="?", default="send", help="Toggle telemetry <on> or <off>")
-	args = parser.parse_args()
-
 	config = configparser.ConfigParser()
 	config.read(CONF)
 	update_config = False
 
-	match args.toggle:
-		case "send":
-			if not config.has_option("Global", "Id"):
-				print("No UUID")
-			else if config.getboolean(NAME, "Enabled"):
-				send(
-					config[NAME]["Server"],
-					int(config[NAME]["Timeout"]),
-					config["Global"]["Id"],
-					config["Global"]["Version"],
-				)
-			else:
-				print("Combine disabled")
-		case "on":
-			config[NAME]['Enabled'] = "True"
-			update_config = True
-		case "off":
-			config[NAME]['Enabled'] = "False"
-			update_config = True
-		case _:
-			parser.print_help()
+	if not config.has_option("Global", "id"):
+		print("No id")
+	elif config.getboolean(NAME, "enabled"):
+		send(
+			config[NAME]["server"],
+			int(config[NAME]["timeout"]),
+			config["Global"]["id"],
+			config["Global"]["version"],
+		)
+	else:
+		print("Combine disabled")
 	
 	if update_config:
 		with open(CONF, 'w') as configfile:
