@@ -19,7 +19,4 @@
   become: true
 
 - name: Remove VM ID
-  file:
-    path: "/etc/dvm/id"
-    state: absent
-  become: true
+  ansible.builtin.command: dvmconf delete id

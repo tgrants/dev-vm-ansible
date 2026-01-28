@@ -2,7 +2,6 @@ packages:
   - gpg
   - python3-requests
   - unzip
-  - uuid-runtime
   - wget
 
 # Scripts without a description are not added to the README

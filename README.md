@@ -6,7 +6,7 @@ Created to reduce the time spent in classrooms downloading and configuring virtu
 ## Features
 
 * ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-* ✅ **Compact** - Initial VirtualBox disk size: **~3 GiB** (<1 GiB compressed)
+* ✅ **Compact** - Initial VirtualBox disk size: **<4 GiB** (<1 GiB compressed)
 * ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 
 ### Tools
@@ -31,7 +31,8 @@ If you don't require a custom configuration, you can use one of these premade vi
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
-| dvm_v7-dev.2.tar.xz | 2.97 | 0.68 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
+| dvm_v7-dev.6.tar.xz | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
+| dvm_v7-dev.2.tar.xz | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
 | dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 | dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
@@ -66,9 +67,10 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Configure the network
 		* Set the hostname e.g. *devvm*
 	* Set up users and passwords
-	* Create users (or update [`hosts`](hosts))
+	* Set up users and passwords
 		* Create a root user with password `pass`, allow login as root`
 		* Create `user` with password `pass`
+		* Alternatively, update [`hosts`](hosts) and [`vars.yml`](group_vars/all/vars.yml)
 	* Configure the clock
 	* Detect and partition disks
 		* Select "Guided - use entire disk" and "All files in one partiton" for a simple setup
@@ -80,9 +82,13 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Install the base system
 		* Drivers to include in initrd: targeted
 	* Configure the package manager
+		* Use non-free software: yes (optional)
+		* Enable source repositories in APT: no (optional)
 	* Install the GRUB boot loader
 	* Select and install software
-		* Select only `SSH server`, deselect everything else
+		* Participate in the package usage survey: yes (optional)
+		* In software selection, choose only `SSH server`, deselect everything else
+	* Finish the installation
 * Prepare the VM for Ansible (after booting it for the first time)
 	* Log in as root
 	* Update VM network settings in VirtualBox `Settings > Network > Attached to > Bridged Adapter`
@@ -121,7 +127,6 @@ The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 ## Updates
 
 It is recommended to run new versions of these playbooks on a fresh Debian install.
-Re-running them should work most of the time, but may occasionally cause issues.
 Backwards compatibility with user-made tools is not guaranteed.
 
 For details on changes, check the [Releases](https://github.com/tgrants/dev-vm-ansible/releases) page on GitHub.

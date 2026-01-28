@@ -8,6 +8,8 @@ lxqt_packages:
   - lxqt-qtplugin
   - pcmanfm-qt
   - openbox
+  - upower
+  - polkitd
   - qterminal
   - xorg
   - xinit

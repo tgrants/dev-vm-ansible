@@ -30,3 +30,10 @@
         name: "code-server@{{ username }}"
         enabled: true
         state: started
+
+- name: Create code server config
+  ansible.builtin.template:
+    src: "config.yaml.j2"
+    dest: "/home/{{ username}}/.config/code-server/config.yaml"
+    mode: '0766'
+  become: true
