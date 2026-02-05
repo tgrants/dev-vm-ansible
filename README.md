@@ -1,13 +1,18 @@
 # dev-vm-ansible
 
-Automated development virtual machine setup for students using [Ansible](https://docs.ansible.com/).
-Created to reduce the time spent in classrooms downloading and configuring virtual machines.
+A compact [VirtualBox](https://www.virtualbox.org/) VM for students.
+Automated with [Ansible](https://docs.ansible.com/).
+
+## Motivation
+
+Created to reduce the time spent in classrooms downloading and configuring
+virtual machines.
 
 ## Features
 
-* ✅ **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-* ✅ **Compact** - Initial VirtualBox disk size: **<4 GiB** (<1 GiB compressed)
-* ✅ **Preconfigured tools** - comes with development software and setup scripts to quickly install more
+- **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
+- **Compact** - Initial VirtualBox disk size: **<4 GiB** (<1 GiB compressed)
+- **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 
 ### Tools
 
@@ -133,7 +138,7 @@ For details on changes, check the [Releases](https://github.com/tgrants/dev-vm-a
 
 ## Contributing
 
-Before submitting a pull request, please discuss your proposed changes in an issue first.
+Before contributing, please read our [Contribution guidelines](CONTRIBUTING.md).
 Feel free to open an issue if you encounter a problem or have any questions.
 
 ## License
