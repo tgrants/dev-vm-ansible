@@ -36,6 +36,7 @@ If you don't require a custom configuration, you can use one of these premade vi
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v7.tar.xz | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
 | dvm_v7-dev.6.tar.xz | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
 | dvm_v7-dev.2.tar.xz | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
 | dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
@@ -102,6 +103,7 @@ To run the playbook, you need to install Ansible on your control machine.
 	* Install sudo and python for Ansible `apt install sudo python3`
 	* Add user to sudoers `adduser user sudo`
 	* Copy key by SSH-ing into the VM from the control machine `ssh user@ip_address`
+		* Remember to exit before running commands on control machine
 * Setup the VM
 	* Copy and adjust the hosts file `cp hosts.example hosts`
 		* Replace VM_IP_ADDRESS with the ip from the previous step
