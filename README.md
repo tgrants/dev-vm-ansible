@@ -6,7 +6,7 @@ Automated with [Ansible](https://docs.ansible.com/).
 ## Motivation
 
 Created to reduce the time spent in classrooms downloading and configuring
-virtual machines.
+virtual machines, and to reduce the space taken up by them.
 
 ## Features
 
@@ -47,6 +47,8 @@ If you don't require a custom configuration, you can use one of these premade vi
 [1] Virtual Disk Image only  
 [2] Password is 'changeme'
 
+A complete list with releases and their checksums is available at [docs/releases.md](docs/releases.md).
+
 ### Similar projects
 
 * [tgrants/dcm](https://github.com/tgrants/dcm) - development container manager
@@ -74,7 +76,7 @@ To run the playbook, you need to install Ansible on your control machine.
 		* Set the hostname e.g. *devvm*
 	* Set up users and passwords
 	* Set up users and passwords
-		* Create a root user with password `pass`, allow login as root`
+		* Create a root user with password `pass`, allow login as root
 		* Create `user` with password `pass`
 		* Alternatively, update [`hosts`](hosts) and [`vars.yml`](group_vars/all/vars.yml)
 	* Configure the clock
