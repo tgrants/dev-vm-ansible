@@ -1,3 +1,15 @@
+## Release cycle
+
+We aim for **two stable releases per year**: one in late **August** and another one in **January**.
+This schedule aligns with the [Debian release cycle](https://www.debian.org/releases/) and the academic year in most countries.
+While we stick to this schedule, we may release extra updates as needed.
+
+Download availability is guaranteed to be at least:
+- **2 years** for stable releases
+- **1 year** for development releases
+
+## All releases
+
 | Name | Size, GiB | Compressed, GiB | Date | SHA256 |
 |---|---|---|---|---|
 | dvm_v7.tar.xz | 3.40 | 0.70 | 2026-02-07 | 4d0bddc2a03ba6d770686af602272b1115972b62a169cd2e63f9d14ee6c5884c |
