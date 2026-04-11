@@ -3,10 +3,19 @@
 A compact [VirtualBox](https://www.virtualbox.org/) VM for students.
 Automated with [Ansible](https://docs.ansible.com/).
 
-## Motivation
+## Motivation and philosophy
 
-Created to reduce the time spent in classrooms downloading and configuring
-virtual machines, and to reduce the space taken up by them.
+Virtual machines are a useful tool in classrooms, especially for software development since they allow to create a flexible, low-stakes environment.
+
+However, in practice, there are several drawbacks:
+- Downloading or transfering VMs over a network can put a heavy strain on it;
+- A lot of space is taken up, especially if multiple students use the same computer;
+- Precious instruction time is often lost to configuring and troubleshooting;
+
+The philosophy of this project is to:
+- Reduce the size of the VM while maintaining useabilty;
+- Increase conveniance by providing configuration scripts;
+- Stay close to a standard Debian system so users can benefit from existing online resources and developers - from reduced maintenance costs.
 
 ## Features
 
@@ -14,16 +23,31 @@ virtual machines, and to reduce the space taken up by them.
 - **Compact** - Initial VirtualBox disk size: **<4 GiB** (<1 GiB compressed)
 - **Preconfigured tools** - comes with development software and setup scripts to quickly install more
 
+### Defualt configuration
+
+- Disk and filesystem
+	- 20 GiB VDI, dynamically allocated
+	- Initial size: ~3.4 GiB, 0.7 GiB compressed
+
 ### Tools
 
 | Category | Tools | Install scripts |
 |---|---|---|
-| **Editors** | [VSCode](https://code.visualstudio.com/), [VS Code Server](https://coder.com/docs/code-server) ||
+| **Editors** | [VS Code Server](https://coder.com/docs/code-server) | |
 | **Languages** | [PHP 8.4](https://www.php.net/), [Python 3.13](https://www.python.org/) | |
 | **Databases** | [Sqlite3](https://sqlite.org/) | [MariaDB](https://mariadb.org/) |
 | **Version Control** | [Git](https://git-scm.com/) | [GitHub CLI](https://cli.github.com/) |
-| **Browsers** | [Firefox](https://www.firefox.com) | |
 | **Dependency management** | [Composer](https://getcomposer.org/) | |
+
+### Requirements
+
+These requirements apply to the latest release.
+
+| | Minimum | Recommended |
+|---|---|---|
+| vCPU | 1 | 2 |
+| RAM, GiB | 2 | 2 |
+| Storage, GiB | 7 | 20 |
 
 ## Download
 
@@ -32,20 +56,23 @@ If you don't require a custom configuration, you can use one of these premade vi
 > [!NOTE]
 >
 > It is recommended to use the latest available stable version.
-> Older versions could be different - make sure you follow the corresponding version of the docs.
+> This documentation only applies to the latest release.
+> See the history of this repository for previous documentation.
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
-| dvm_v7.tar.xz | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
-| dvm_v7-dev.6.tar.xz | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
-| dvm_v7-dev.2.tar.xz | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
-| dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
-| dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
-| dvm_v5.tar.xz [1] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
-| dvm_v3.tar.xz [1][2] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
+| dvm_v7.tar.xz [1] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
+| dvm_v7-dev.6.tar.xz [1] | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
+| dvm_v7-dev.2.tar.xz [1] | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
+| dvm_v6.tar.xz [1] | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
+| dvm_v6_preview.tar.xz [1] | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
+| dvm_v5.tar.xz [1][2] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
+| dvm_v3.tar.xz [2][3][4] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
 
-[1] Virtual Disk Image only  
-[2] Password is 'changeme'
+[1] Has a desktop environment: LXQt  
+[2] Virtual Disk Image only  
+[3] Has a desktop environment: Xfce  
+[4] Password is 'changeme'
 
 A complete list with releases and their checksums is available at [docs/releases.md](docs/releases.md).
 

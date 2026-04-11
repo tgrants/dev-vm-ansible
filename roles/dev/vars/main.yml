@@ -1,6 +1,5 @@
 packages:
 # General purpose
-  - firefox-esr
   - git
   - python3 # Should already exist to use ansible
 # PHP
