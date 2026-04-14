@@ -25,8 +25,6 @@ scripts:
     Description: "Installs mariadb and php-mysql"
 # - Name: install-node-npm
 #   Description: "Installs node.js and npm"
-# - Name: reset-theme
-#   Description: "Resets the XFCE theme to default"
 
 # 'su_scripts' are copied to /usr/local/sbin
 su_scripts: []
