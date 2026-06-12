@@ -153,10 +153,9 @@ You can enable and disable this by running `dvmconf set combine enabled false` o
 
 The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
-#### Trim virtual disk
+#### Distribute the image
 
-* Remove all unnecessary files `ansible-playbook playbooks/cleanup.yml`
-* On VM, run `clear-disk`, then shut it down
+* On VM, run `sysprep`. This will prepare the system for distribution and shut it down.
 * On host, run `vboxmanage modifymedium /mnt/storage/VBOX/dev_vm/dev_vm.vdi --compact`
 	* Edit this path to match your .vdi file
 

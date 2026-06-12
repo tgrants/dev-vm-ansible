@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# This script prepares the system for distribution
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2026-06-12
+# File created: {{ ansible_facts.date_time.date }}
+
+# Stop recording history
+set +o history
+
+# Root check
+if [ "$(id -u)" -ne 0 ]; then
+	echo "This script must be run as root. Elevating via su."
+	SCRIPT_PATH=$(realpath "$0")
+	su root -c "/bin/bash $SCRIPT_PATH"
+	exit 0
+fi
+
+echo "Cleaning APT"
+apt-get autoremove -y --purge
+apt-get clean
+apt-get autoclean
+
+echo "Resetting machine-id"
+echo "uninitialized" > /etc/machine-id
+rm -f /var/lib/dbus/machine-id # Remove D-Bus copy
+
+echo "Removing SSH host keys"
+rm -f /etc/ssh/ssh_host_*_key*
+
+echo "Cleaning all user histories"
+shopt -s nullglob # Prevent loop errors if /home is empty
+for user_dir in /home/*; do
+	if [ -f "$user_dir/.bash_history" ]; then
+		truncate -s 0 "$user_dir/.bash_history"
+	fi
+done
+truncate -s 0 /root/.bash_history
+
+echo "Clearing logs"
+systemctl stop rsyslog 2>/dev/null || true
+find /var/log -type f -exec truncate -s 0 {} +
+journalctl --vacuum-time=1s -q
+rm -rf /var/log/journal/*
+
+echo "Zeroing the disk"
+dd if=/dev/zero of=/bigemptyfile bs=4096k status=progress || true
+rm -f /bigemptyfile
+
+echo "Syncing"
+sync
+
+unset HISTFILE
+history -c
+
+echo "Shutting down"
+/sbin/poweroff

@@ -7,9 +7,9 @@ packages:
 # Scripts without a description are not added to the README
 # 'scripts' are copied to /usr/local/bin
 scripts:
-  - Name: clear-disk
+  - Name: sysprep
     Extension: .sh
-    Description: "Zeroes the disk"
+    Description: "Prepares the sytem for distribution"
 # - Name: clear-tmp
 #   Extension: .sh
   - Name: combine
