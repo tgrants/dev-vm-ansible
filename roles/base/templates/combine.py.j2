@@ -4,15 +4,26 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-01-27
+# Last updated: 2026-06-12
 # File created: {{ ansible_facts.date_time.date }}
 
 import configparser
 import json
+import os
 import requests
 
 CONF = "/etc/dvm/dvm.conf"
 NAME = "Combine"
+MACHINE_ID_PATH = "/etc/machine-id"
+
+
+def get_machine_id():
+	if os.path.exists(MACHINE_ID_PATH):
+		with open(MACHINE_ID_PATH, "r") as f:
+			machine_id = f.read().strip()
+			if machine_id and machine_id != "uninitialized":
+				return machine_id
+	return None
 
 
 def send(url, timeout, id, version):
@@ -39,14 +50,15 @@ if __name__ == "__main__":
 	config = configparser.ConfigParser()
 	config.read(CONF)
 	update_config = False
+	machine_id: str = get_machine_id()
 
-	if not config.has_option("Global", "id"):
+	if len(machine_id) != 32:
 		print("No id")
 	elif config.getboolean(NAME, "enabled"):
 		send(
 			config[NAME]["server"],
 			int(config[NAME]["timeout"]),
-			config["Global"]["id"],
+			machine_id,
 			config["Global"]["version"],
 		)
 	else:
