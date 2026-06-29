@@ -1,4 +1,5 @@
 packages:
+  - figlet
   - gpg
   - python3-requests
   - unzip

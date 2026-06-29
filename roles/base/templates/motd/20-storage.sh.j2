@@ -1,0 +1,3 @@
+#!/bin/sh
+
+df -h / | grep sd | awk -F ' ' '{print "Disk:\t" $3 " / " $2 " - " $4 " free"}'
