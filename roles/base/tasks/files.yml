@@ -16,19 +16,10 @@
     mode: '0766'
   become: true
 
-- name: Create Desktop directory
-  file:
-    path: "/home/{{ username }}/Desktop"
-    state: directory
-    owner: "{{ username }}"
-    group: "{{ username }}"
-    mode: "0755"
-  become: true
-
-- name: Create a text file from a template on the desktop
+- name: Create README
   ansible.builtin.template:
     src: "README.txt.j2"
-    dest: "/home/{{ username }}/Desktop/README.txt"
+    dest: "/home/{{ username }}/README"
     mode: "0644"
   become: false
 
