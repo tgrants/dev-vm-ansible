@@ -45,9 +45,8 @@ find /var/log -type f -exec truncate -s 0 {} +
 journalctl --vacuum-time=1s -q
 rm -rf /var/log/journal/*
 
-echo "Zeroing the disk"
-dd if=/dev/zero of=/bigemptyfile bs=4096k status=progress || true
-rm -f /bigemptyfile
+echo "Trimming filesystem"
+fstrim -av || true
 
 echo "Syncing"
 sync

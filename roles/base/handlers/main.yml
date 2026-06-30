@@ -4,3 +4,13 @@
   service:
     name: sshd
     state: restarted
+
+- name: Remount root
+  ansible.builtin.command:
+    cmd: mount -o remount,compress=zstd:3 /
+  changed_when: true
+
+- name: Mark filesystem recompressed
+  ansible.builtin.file:
+    path: /etc/dvm/.btrfs_recompressed
+    state: touch

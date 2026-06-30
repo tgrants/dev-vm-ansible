@@ -46,7 +46,7 @@ These requirements apply to the latest release.
 | | Minimum | Recommended |
 |---|---|---|
 | vCPU | 1 | 2 |
-| RAM, GiB | 2 | 2 |
+| RAM, GiB | 1 | 2 |
 | Storage, GiB | 7 | 20 |
 
 ## Download
@@ -61,6 +61,7 @@ If you don't require a custom configuration, you can use one of these prebuilt v
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v8-dev.12.tar.xz | 1.34 | 0.69 | 2026-06-30 | [Google Drive](https://drive.google.com/file/d/1CZMisYxZt_9_oDuumazdwpn0lADD5hSo) |
 | dvm_v7.tar.xz [1] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
 | dvm_v7-dev.6.tar.xz [1] | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
 | dvm_v7-dev.2.tar.xz [1] | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
@@ -93,24 +94,26 @@ To run the playbook, you need to install Ansible on your control machine.
 #### Create the virtual machine
 
 * Create a [VirtualBox](https://www.virtualbox.org/) VM
-	* At least 2 GiB RAM is recommended for using an IDE and a browser at the same time
+	* At least 1 GiB RAM is recommended
 	* A 20 GB VDI disk should be enough, adjust for your requirements
+	* Execute `VBoxManage storageattach "dev_vm" --storagectl "SATA" --port 0 --device 0 --discard on`
 * Install [Debian 13](https://www.debian.org/)
 	* In the installer menu, press `TAB` and add `expert priority=low`
 	* Choose language `en_US.UTF-8 locale`
 	* Load installer components from installation media
 	* Configure the network
-		* Set the hostname, e.g. *devvm*
+		* Set the hostname, e.g. *dvm*
 	* Set up users and passwords
 		* Create a root user with password `pass`, allow login as root
 		* Create `user` with password `pass`
 		* Alternatively, update [`hosts`](hosts) and [`vars.yml`](group_vars/all/vars.yml)
 	* Configure the clock
+		* Select timezone: Coordinated Universal Time
 	* Detect and partition disks
 		* Select "Guided - use entire disk" and "All files in one partition" for a simple setup
 		* Manually create a single partition for a swapless setup
 			* Partition table type - msdos
-			* Use as: Ext4 journaling file system
+			* Use as: btrfs journaling file system
 			* Mount point: /
 			* Bootable flag: on
 	* Install the base system
