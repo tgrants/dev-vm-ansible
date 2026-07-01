@@ -19,7 +19,7 @@ Download availability is guaranteed to be at least:
 | dvm_v6.tar.xz | 3.66 | 0.86 | 2025-11-20 | bf3407c94a0730b1527092a35e5af0d841827608bd82fe8b0b91c73291880e51 |
 | dvm_v6_preview.tar.xz | 3.90 | 1.02 | 2025-10-20 | 58f9fa8a02f63bae6398d60c43a2c6fcd75a3cd480cc4d735df93e1cae83b7a3 |
 | dvm_v5.tar.xz | 4.12 | 1.15 | 2025-09-11 | e1abe13f2f58c0c0d939e93643078f00d68a1bc180e4cf77adc954474140d390 |
-| dvm_v4 | | | 2024-05-10 | |
+| dvm_v4 | | | 2025-05-10 | |
 | dvm_v3.tar.xz | 3.94 | 0.75 | 2024-09-28 | ff5631eb1e144bb4e442889fe5393e00ac2981a800c28964c4a21a6a1914bca1 |
 | dvm_v2 | | | 2024-09-16 | |
 | dvm_v1 | | | 2024-09-11 | |
