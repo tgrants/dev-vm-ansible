@@ -19,15 +19,15 @@ The philosophy of this project is to:
 
 ## Features
 
-- **Lightweight** - Runs smoothly on modest hardware (tested with **2 GiB RAM**)
-- **Compact** - Initial VirtualBox disk size: **<4 GiB** (<1 GiB compressed)
+- **Lightweight** - Runs smoothly on modest hardware (**1 GiB RAM**)
+- **Compact** - Initial VirtualBox disk size: **~1.3 GiB** (~0.7 GiB compressed)
 - **Preconfigured tools** - comes with development software and setup scripts to install more
 
 ### Default configuration
 
 - Disk and filesystem
 	- 20 GiB VDI, dynamically allocated
-	- Initial size: ~3.4 GiB, 0.7 GiB compressed
+	- Initial size: ~1.3 GiB, 0.7 GiB compressed
 
 ### Tools
 
@@ -41,13 +41,17 @@ The philosophy of this project is to:
 
 ### Requirements
 
-These requirements apply to the latest release.
+> [!NOTE]
+>
+> These requirements apply to the latest release.
 
-| | Minimum | Recommended |
-|---|---|---|
-| vCPU | 1 | 2 |
-| RAM, GiB | 1 | 2 |
-| Storage, GiB | 7 | 20 |
+- Host
+	- **OS**: [compatible with VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+	- **VirtualBox**: compatible with version 7.2.10
+- VM
+	- **vCPU**: 1 core is usually enough even with older CPUs.
+	- **RAM**:  At least 512 MiB. 1 GiB is recommended.
+	- **Storage**: at least 10 GiB is recommended.
 
 ## Download
 
@@ -96,7 +100,7 @@ To run the playbook, you need to install Ansible on your control machine.
 * Create a [VirtualBox](https://www.virtualbox.org/) VM
 	* At least 1 GiB RAM is recommended
 	* A 20 GB VDI disk should be enough, adjust for your requirements
-	* Execute `VBoxManage storageattach "dev_vm" --storagectl "SATA" --port 0 --device 0 --discard on`
+	* Enable disk trimming `VBoxManage storageattach "dev_vm" --storagectl "SATA" --port 0 --device 0 --discard on`
 * Install [Debian 13](https://www.debian.org/)
 	* In the installer menu, press `TAB` and add `expert priority=low`
 	* Choose language `en_US.UTF-8 locale`
@@ -149,7 +153,7 @@ To run the playbook, you need to install Ansible on your control machine.
 
 #### Telemetry
 
-Some data is collected to estimate the amount of premade VMs in use and their versions.
+Some data is collected to estimate the amount of prebuilt VMs in use and their versions.
 Telemetry settings are defined in [`dvm.conf`](roles/base/templates/dvm.conf.j2).
 You can enable and disable this by running `dvmconf set combine enabled false` or editing the config manually.
 
