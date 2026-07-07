@@ -14,3 +14,7 @@
   ansible.builtin.file:
     path: /etc/dvm/.btrfs_recompressed
     state: touch
+
+- name: Apply sysctl settings
+  ansible.builtin.command: sysctl --system
+  changed_when: true

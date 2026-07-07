@@ -1,0 +1,8 @@
+- name: Configure kernel console log level
+  ansible.builtin.template:
+    src: templates/sysctl/99-console-loglevel.conf.j2
+    dest: /etc/sysctl.d/99-console-loglevel.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Apply sysctl settings
