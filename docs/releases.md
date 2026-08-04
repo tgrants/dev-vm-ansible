@@ -1,6 +1,6 @@
 ## Release cycle
 
-We aim for **two stable releases per year**: one in late **August** and another one in **January**.
+We aim for **two stable releases per year**: one in **August** and another one in **January**.
 This schedule aligns with the [Debian release cycle](https://www.debian.org/releases/) and the academic year in most countries.
 While we stick to this schedule, we may release extra updates as needed.
 

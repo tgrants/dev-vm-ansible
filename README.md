@@ -14,8 +14,9 @@ However, in practice, there are several drawbacks:
 
 The philosophy of this project is to:
 - Reduce the size of the VM while maintaining usabilty;
-- Increase convenience by providing configuration scripts;
-- Stay close to a standard Debian system so users can benefit from existing online resources, while developers benefit from reduced maintenance costs.
+- Increase convenience with installation and configuration scripts;
+- Stay close to a standard Debian system so users can benefit from existing online resources, while developers benefit from reduced maintenance costs;
+- Follow best practices when possible.
 
 ## Features
 
@@ -47,7 +48,7 @@ The philosophy of this project is to:
 
 - Host
 	- **OS**: [compatible with VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-	- **VirtualBox**: compatible with version 7.2.10
+	- **VirtualBox**: compatible with version 7.2
 - VM
 	- **vCPU**: 1 core is usually enough even with older CPUs.
 	- **RAM**:  At least 512 MiB. 1 GiB is recommended.
