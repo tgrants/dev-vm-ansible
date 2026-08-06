@@ -4,7 +4,7 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-06-12
+# Last updated: 2026-08-06
 # File created: {{ ansible_facts.date_time.date }}
 
 # Stop recording history
@@ -14,8 +14,7 @@ set +o history
 if [ "$(id -u)" -ne 0 ]; then
 	echo "This script must be run as root. Elevating via su."
 	SCRIPT_PATH=$(realpath "$0")
-	su root -c "/bin/bash $SCRIPT_PATH"
-	exit 0
+	su - root -c "/bin/bash $SCRIPT_PATH"
 fi
 
 echo "Cleaning APT"
@@ -54,5 +53,10 @@ sync
 unset HISTFILE
 history -c
 
-echo "Shutting down"
-/sbin/poweroff
+read -rp "Shut down? [Y/n] " answer
+if [[ -z "$answer" || "$answer" =~ ^[Yy]$ ]]; then
+	echo "Shutting down"
+	/sbin/poweroff
+else
+	echo "Cancelled."
+fi
