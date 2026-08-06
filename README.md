@@ -66,6 +66,7 @@ If you don't require a custom configuration, you can use one of these prebuilt v
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v8.tar.xz | 1.56 | 0.74 | 2026-08-06 | [Google Drive](https://drive.google.com/file/d/14PZ92j1gglvNOrsZVqpkGKqu-n8VSTPI) |
 | dvm_v8-dev.12.tar.xz | 1.34 | 0.69 | 2026-06-30 | [Google Drive](https://drive.google.com/file/d/1CZMisYxZt_9_oDuumazdwpn0lADD5hSo) |
 | dvm_v7.tar.xz [1] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
 | dvm_v7-dev.6.tar.xz [1] | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |

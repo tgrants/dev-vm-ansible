@@ -12,6 +12,7 @@ Download availability is guaranteed to be at least:
 
 | Name | Size, GiB | Compressed, GiB | Date | SHA256 |
 |---|---|---|---|---|
+| dvm_v8.tar.xz | 1.56 | 0.74 | 2026-08-06 | 4807f44c2bdb9ad831b910b6df0c21fea42c0e0908084af987808f093a257158 |
 | dvm_v8-dev.12.tar.xz | 1.34 | 0.69 | 2026-06-30 | 7d3c72bd4f4119614230e60ecff1b75f9f3952a79e073ac78774aeaa194b3b30 |
 | dvm_v7.tar.xz | 3.40 | 0.70 | 2026-02-07 | 4d0bddc2a03ba6d770686af602272b1115972b62a169cd2e63f9d14ee6c5884c |
 | dvm_v7-dev.6.tar.xz | 3.36 | 0.69 | 2026-01-28 | 1009536112de769dbec8aac368da534602d5ee531c08c5a6f67acd368a80d2c5 |
