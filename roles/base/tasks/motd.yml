@@ -1,0 +1,37 @@
+---
+
+- name: Install MOTD scripts
+  ansible.builtin.template:
+    src: "motd/{{ item }}.sh.j2"
+    dest: "/etc/update-motd.d/{{ item }}"
+    mode: "0755"
+    owner: root
+    group: root
+  loop:
+    - 00-header
+    - 10-system
+    - 20-storage
+    - 30-network
+    - 40-security
+    - 99-footer
+
+- name: Remove 10-uname MOTD script
+  ansible.builtin.file:
+    path: /etc/update-motd.d/10-uname
+    state: absent
+
+- name: Remove static MOTD file
+  ansible.builtin.file:
+    path: /etc/motd
+    state: absent
+
+- name: Deploy login banners
+  ansible.builtin.template:
+    src: templates/motd/issue.j2
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+    - /etc/issue
+    - /etc/issue.net

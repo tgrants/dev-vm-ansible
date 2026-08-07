@@ -1,22 +1,4 @@
 ---
 
-- name: Remove .cache
-  file:
-    path: "/home/{{ username }}/.cache"
-    state: absent
-  become: true
-
-- name: Remove .mozilla
-  file:
-    path: "/home/{{ username }}/.mozilla"
-    state: absent
-  become: true
-
-- name: Remove .vscode
-  file:
-    path: "/home/{{ username }}/.vscode"
-    state: absent
-  become: true
-
 - name: Remove VM ID
   ansible.builtin.command: dvmconf delete id

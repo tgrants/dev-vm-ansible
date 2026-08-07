@@ -4,7 +4,7 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-01-27
+# Last updated: 2026-07-07
 # File created: {{ ansible_facts.date_time.date }}
 
 import argparse
@@ -58,6 +58,16 @@ def get_key(args):
 		print(result)
 
 
+def list_keys(args):
+	if not args.section:
+		for section in config.sections():
+			print(section)
+	else:
+		set_section(args)
+		for key in config[args.section]:
+			print(key + "\t" + config[args.section][key])
+
+
 if __name__ == "__main__":
 	config = configparser.ConfigParser()
 	config.read(CONF)
@@ -87,6 +97,10 @@ if __name__ == "__main__":
 	parser_get.add_argument('section', nargs="?")
 	parser_get.add_argument('key')
 	parser_get.set_defaults(func=get_key)
+
+	parser_list = subparsers.add_parser("list")
+	parser_list.add_argument('section', nargs="?")
+	parser_list.set_defaults(func=list_keys)
 
 	args = parser.parse_args()
 	args.func(args)

@@ -1,4 +1,5 @@
 packages:
+  - figlet
   - gpg
   - python3-requests
   - unzip
@@ -7,9 +8,9 @@ packages:
 # Scripts without a description are not added to the README
 # 'scripts' are copied to /usr/local/bin
 scripts:
-  - Name: clear-disk
+  - Name: sysprep
     Extension: .sh
-    Description: "Zeroes the disk"
+    Description: "Prepares the sytem for distribution"
 # - Name: clear-tmp
 #   Extension: .sh
   - Name: combine
@@ -25,8 +26,6 @@ scripts:
     Description: "Installs mariadb and php-mysql"
 # - Name: install-node-npm
 #   Description: "Installs node.js and npm"
-# - Name: reset-theme
-#   Description: "Resets the XFCE theme to default"
 
 # 'su_scripts' are copied to /usr/local/sbin
 su_scripts: []

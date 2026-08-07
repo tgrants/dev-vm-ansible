@@ -6,3 +6,6 @@
 - include_tasks: install.yml
 - include_tasks: files.yml
 - include_tasks: cron.yml
+- include_tasks: motd.yml
+- include_tasks: btrfs.yml
+- include_tasks: sysctl.yml

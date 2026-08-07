@@ -1,0 +1,27 @@
+---
+
+- name: Enable compression on btrfs root filesystem
+  ansible.builtin.replace:
+    path: /etc/fstab
+    regexp: '(^UUID=.*\s+/\s+btrfs\s+)(?!.*compress=)([^ ]+)'
+    replace: '\1\2,compress=zstd:3'
+  notify:
+    - Remount root
+
+- name: Run handlers immediately if fstab changed
+  ansible.builtin.meta: flush_handlers
+
+- name: Check whether the initial recompression has been performed
+  ansible.builtin.stat:
+    path: /etc/dvm/.btrfs_recompressed
+  register: btrfs_recompressed
+
+- name: Recompress existing files
+  ansible.builtin.command:
+    cmd: btrfs filesystem defragment -r -czstd /
+  when: not btrfs_recompressed.stat.exists
+  notify:
+    - Mark filesystem recompressed
+
+- name: Flush handlers after recompression
+  ansible.builtin.meta: flush_handlers
