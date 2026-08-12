@@ -4,11 +4,14 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-07-07
+# Last updated: 2026-08-12
 # File created: {{ ansible_facts.date_time.date }}
 
 import argparse
 import configparser
+
+from decimal import Decimal
+
 
 CONF = "/etc/dvm/dvm.conf"
 
@@ -68,6 +71,24 @@ def list_keys(args):
 			print(key + "\t" + config[args.section][key])
 
 
+def inc_key(args):
+	"""
+	Increase a key by a given amount.
+
+	Args:
+		args.section (str): Section containing the key. Optional.
+		args.key (str): Key to increment.
+		args.delta (Decimal): Amount to add. Defaults to 1.
+	"""
+	set_section(args)
+	if config.has_option(args.section, args.key):
+		current_value = Decimal(config[args.section][args.key])
+		config[args.section][args.key] = str(current_value + args.delta)
+		set_config_update()
+	else:
+		print("Key not found")
+
+
 if __name__ == "__main__":
 	config = configparser.ConfigParser()
 	config.read(CONF)
@@ -101,6 +122,12 @@ if __name__ == "__main__":
 	parser_list = subparsers.add_parser("list")
 	parser_list.add_argument('section', nargs="?")
 	parser_list.set_defaults(func=list_keys)
+
+	parser_inc = subparsers.add_parser("inc")
+	parser_inc.add_argument('section', nargs="?")
+	parser_inc.add_argument('key')
+	parser_inc.add_argument('-d', '--delta', type=Decimal, default=1)
+	parser_inc.set_defaults(func=inc_key)
 
 	args = parser.parse_args()
 	args.func(args)
