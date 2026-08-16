@@ -11,8 +11,6 @@ scripts:
   - Name: sysprep
     Extension: .sh
     Description: "Prepares the sytem for distribution"
-# - Name: clear-tmp
-#   Extension: .sh
   - Name: combine
     Extension: .py
   - Name: dvmconf
@@ -24,10 +22,9 @@ scripts:
   - Name: install-mariadb
     Extension: .sh
     Description: "Installs mariadb and php-mysql"
-# - Name: install-node-npm
-#   Description: "Installs node.js and npm"
 
 # 'su_scripts' are copied to /usr/local/sbin
-su_scripts: []
-# - Name: generate-id
-#   Extension: .sh
+su_scripts:
+  - Name: remove-kernels
+    Extension: .sh
+    Description: "Remove all installed kernels except the one in use"

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script removes all old kernels and their associated headers/modules
+#
+# (c) Toms Grants, MIT License
+# {{ source_url }}
+#
+# Last updated: 2026-08-16
+# File created: {{ ansible_facts.date_time.date }}
+
+RUNNING="$(uname -r)"
+ABI="${RUNNING%-*}"
+
+dpkg-query -W -f='${binary:Package}\n' 2>/dev/null |
+	grep -E '^linux-(image|headers|modules)-[0-9]' |
+	grep -v "$ABI" |
+	xargs -r sudo apt-get purge -y
