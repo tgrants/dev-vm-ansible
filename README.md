@@ -163,7 +163,7 @@ The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
 
 #### Distribute the image
 
-* On the VM, run `sysprep`. This will prepare the system for distribution and shut it down.
+* On the VM, run `sudo sysprep`. This will prepare the system for distribution and shut it down. For more details, see [docs/sysprep.md](docs/sysprep.md).
 * On the host, run `vboxmanage modifymedium /mnt/storage/VBOX/dev_vm/dev_vm.vdi --compact`
 	* Edit this path to match your .vdi file
 

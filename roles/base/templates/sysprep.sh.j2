@@ -4,7 +4,7 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-08-06
+# Last updated: 2026-08-18
 # File created: {{ ansible_facts.date_time.date }}
 
 # Stop recording history
@@ -12,10 +12,12 @@ set +o history
 
 # Root check
 if [ "$(id -u)" -ne 0 ]; then
-	echo "This script must be run as root. Elevating via su."
-	SCRIPT_PATH=$(realpath "$0")
-	su - root -c "/bin/bash $SCRIPT_PATH"
+	echo "This script must be run as root."
+	exit 0
 fi
+
+echo "Removing old kernels"
+remove-kernels
 
 echo "Cleaning APT"
 apt-get autoremove -y --purge
@@ -26,8 +28,11 @@ echo "Resetting machine-id"
 echo "uninitialized" > /etc/machine-id
 rm -f /var/lib/dbus/machine-id # Remove D-Bus copy
 
-echo "Removing SSH host keys"
-rm -f /etc/ssh/ssh_host_*_key*
+# Remove SSH host keys
+if [[ ${SYSPREP_SKIP_SSH} != true ]]; then
+	echo "Removing SSH host keys"
+	rm -f /etc/ssh/ssh_host_*_key*
+fi
 
 echo "Cleaning all user histories"
 shopt -s nullglob # Prevent loop errors if /home is empty
@@ -53,10 +58,8 @@ sync
 unset HISTFILE
 history -c
 
-read -rp "Shut down? [Y/n] " answer
-if [[ -z "$answer" || "$answer" =~ ^[Yy]$ ]]; then
-	echo "Shutting down"
+# Poweroff
+if [[ ${SYSPREP_SKIP_POWEROFF} != true ]]; then
+	echo "Poweroff"
 	/sbin/poweroff
-else
-	echo "Cancelled."
 fi

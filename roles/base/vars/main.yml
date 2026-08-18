@@ -8,9 +8,6 @@ packages:
 # Scripts without a description are not added to the README
 # 'scripts' are copied to /usr/local/bin
 scripts:
-  - Name: sysprep
-    Extension: .sh
-    Description: "Prepares the sytem for distribution"
   - Name: combine
     Extension: .py
   - Name: dvmconf
@@ -28,3 +25,6 @@ su_scripts:
   - Name: remove-kernels
     Extension: .sh
     Description: "Remove all installed kernels except the one in use"
+  - Name: sysprep
+    Extension: .sh
+    Description: "Prepares the sytem for distribution"
