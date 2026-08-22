@@ -4,7 +4,7 @@
 # (c) Toms Grants, MIT License
 # {{ source_url }}
 #
-# Last updated: 2026-08-18
+# Last updated: 2026-08-22
 # File created: {{ ansible_facts.date_time.date }}
 
 # Stop recording history
@@ -27,6 +27,12 @@ apt-get autoclean
 echo "Resetting machine-id"
 echo "uninitialized" > /etc/machine-id
 rm -f /var/lib/dbus/machine-id # Remove D-Bus copy
+
+# Reset boot counter
+if [[ ${SYSPREP_SKIP_BOOTCOUNT} != true ]]; then
+	echo "Resetting boot counter"
+	dvmconf set boot_count 0
+fi
 
 # Remove SSH host keys
 if [[ ${SYSPREP_SKIP_SSH} != true ]]; then

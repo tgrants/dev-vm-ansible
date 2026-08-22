@@ -1,0 +1,15 @@
+---
+
+- name: Install bootcount systemd service
+  ansible.builtin.template:
+    src: systemd/bootcount.service.j2
+    dest: /etc/systemd/system/bootcount.service
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Enable and start bootcount service
+  ansible.builtin.systemd_service:
+    name: bootcount.service
+    enabled: true
+    daemon_reload: true

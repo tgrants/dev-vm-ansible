@@ -15,7 +15,8 @@ The script
 
 To disable a specific part of the script, you can use these variables.
 
-- `SYSPREP_SKIP_SSH`: if `true`, skips removing SSH host keys
+- `SYSPREP_SKIP_BOOTCOUNT`: if `true`, skips boot counter reset
 - `SYSPREP_SKIP_POWEROFF`: if `true`, skips poweroff after completing execution
+- `SYSPREP_SKIP_SSH`: if `true`, skips removing SSH host keys
 
 Log in as root with `su -` and export them, for example, `export SYSPREP_SKIP_POWEROFF=true`.

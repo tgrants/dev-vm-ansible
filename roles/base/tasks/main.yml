@@ -10,3 +10,4 @@
 - include_tasks: btrfs.yml
 - include_tasks: sysctl.yml
 - include_tasks: grub.yml
+- include_tasks: systemd.yml

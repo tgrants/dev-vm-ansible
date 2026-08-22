@@ -1,0 +1,11 @@
+[Unit]
+Description=Increment boot count
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dvmconf inc boot_count
+
+[Install]
+WantedBy=multi-user.target
