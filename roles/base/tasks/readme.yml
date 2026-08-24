@@ -1,0 +1,8 @@
+---
+
+- name: Create README
+  ansible.builtin.template:
+    src: "README.txt.j2"
+    dest: "/home/{{ username }}/README"
+    mode: "0644"
+  become: false

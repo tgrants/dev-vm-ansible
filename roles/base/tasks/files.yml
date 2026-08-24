@@ -16,13 +16,6 @@
     mode: '0766'
   become: true
 
-- name: Create README
-  ansible.builtin.template:
-    src: "README.txt.j2"
-    dest: "/home/{{ username }}/README"
-    mode: "0644"
-  become: false
-
 - name: Create projects directory
   file:
     path: "/home/{{ username }}/Projects"
