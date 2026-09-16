@@ -35,10 +35,8 @@ The philosophy of this project is to:
 | Category | Tools | Install scripts |
 |---|---|---|
 | **Editors** | [VS Code Server](https://coder.com/docs/code-server) | |
-| **Languages** | [PHP 8.4](https://www.php.net/), [Python 3.13](https://www.python.org/) | |
-| **Databases** | [Sqlite3](https://sqlite.org/) | [MariaDB](https://mariadb.org/) |
+| **Languages** | [Python 3.13](https://www.python.org/) | |
 | **Version Control** | [Git](https://git-scm.com/) | [GitHub CLI](https://cli.github.com/) |
-| **Dependency management** | [Composer](https://getcomposer.org/) | |
 
 ### Requirements
 
@@ -66,6 +64,7 @@ If you don't require a custom configuration, you can use one of these prebuilt v
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
+| dvm_v9-dev.10.tar.xz | 1.14 | 0.63 | 2026-09-16 | [Google Drive](https://drive.google.com/file/d/1CxrF0pua6ZfQm2_eOSq-epzcrzG3-JxJ) |
 | dvm_v8.tar.xz | 1.56 | 0.74 | 2026-08-06 | [Google Drive](https://drive.google.com/file/d/14PZ92j1gglvNOrsZVqpkGKqu-n8VSTPI) |
 | dvm_v8-dev.12.tar.xz | 1.34 | 0.69 | 2026-06-30 | [Google Drive](https://drive.google.com/file/d/1CZMisYxZt_9_oDuumazdwpn0lADD5hSo) |
 | dvm_v7.tar.xz [1] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |

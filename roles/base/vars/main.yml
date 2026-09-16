@@ -16,9 +16,9 @@ scripts:
   - Name: install-github-cli
     Extension: .sh
     Description: "Installs and prepares Github cli"
-  - Name: install-mariadb
-    Extension: .sh
-    Description: "Installs mariadb and php-mysql"
+# - Name: install-mariadb
+#   Extension: .sh
+#   Description: "Installs mariadb and php-mysql"
 
 # 'su_scripts' are copied to /usr/local/sbin
 su_scripts:

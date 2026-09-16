@@ -3,20 +3,20 @@ packages:
   - git
   - python3 # Should already exist to use ansible
 # PHP
-  - php
-  - php-curl
-  - php-cli
-  - php-bcmath
-  - php-json
-  - php-mbstring
-  - php-xml
-  - php-tokenizer
-  - php-zip
+# - php
+# - php-curl
+# - php-cli
+# - php-bcmath
+# - php-json
+# - php-mbstring
+# - php-xml
+# - php-tokenizer
+# - php-zip
 # Sqlite
-  - sqlite3
-  - php-sqlite3
+# - sqlite3
+# - php-sqlite3
 
 # VS Code Server
-code_server_version: 4.131.0
+code_server_version: 4.137.0
 code_server_port: 8080
 code_server_password: "{{ password }}"
