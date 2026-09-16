@@ -99,6 +99,12 @@ To run the playbook, you need to install Ansible on your control machine.
 
 #### Create the virtual machine
 
+##### With preseeding
+
+See [docs/create.md](docs/create.md). Experimental.
+
+##### Manually
+
 * Create a [VirtualBox](https://www.virtualbox.org/) VM
 	* At least 1 GiB RAM is recommended
 	* A 20 GB VDI disk should be enough, adjust for your requirements

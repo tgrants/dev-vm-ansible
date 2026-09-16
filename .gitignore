@@ -1,6 +1,9 @@
 # Hosts
 hosts
 
+# ISO build directory
+build/
+
 # Development tools
 .vscode/
 
