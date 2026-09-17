@@ -64,21 +64,23 @@ If you don't require a custom configuration, you can use one of these prebuilt v
 
 | Name | Size, GiB | Compressed, GiB | Date | Link |
 |---|---|---|---|---|
-| dvm_v9-dev.10.tar.xz | 1.14 | 0.63 | 2026-09-16 | [Google Drive](https://drive.google.com/file/d/1CxrF0pua6ZfQm2_eOSq-epzcrzG3-JxJ) |
-| dvm_v8.tar.xz | 1.56 | 0.74 | 2026-08-06 | [Google Drive](https://drive.google.com/file/d/14PZ92j1gglvNOrsZVqpkGKqu-n8VSTPI) |
-| dvm_v8-dev.12.tar.xz | 1.34 | 0.69 | 2026-06-30 | [Google Drive](https://drive.google.com/file/d/1CZMisYxZt_9_oDuumazdwpn0lADD5hSo) |
-| dvm_v7.tar.xz [1] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
-| dvm_v7-dev.6.tar.xz [1] | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
-| dvm_v7-dev.2.tar.xz [1] | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
-| dvm_v6.tar.xz [1] | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
-| dvm_v6_preview.tar.xz [1] | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
-| dvm_v5.tar.xz [1][2] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
-| dvm_v3.tar.xz [2][3][4] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
+| dvm_v9-dev.11.ova | 1.13 | 0.73 | 2026-09-17 | [Google Drive](https://drive.google.com/file/d/1UrDSv8ioxFJo4jIwUtQEKA8OoBoaLv1f) |
+| dvm_v9-dev.10.tar.xz [1] | 1.14 | 0.63 | 2026-09-16 | [Google Drive](https://drive.google.com/file/d/1CxrF0pua6ZfQm2_eOSq-epzcrzG3-JxJ) |
+| dvm_v8.tar.xz [1] | 1.56 | 0.74 | 2026-08-06 | [Google Drive](https://drive.google.com/file/d/14PZ92j1gglvNOrsZVqpkGKqu-n8VSTPI) |
+| dvm_v8-dev.12.tar.xz [1] | 1.34 | 0.69 | 2026-06-30 | [Google Drive](https://drive.google.com/file/d/1CZMisYxZt_9_oDuumazdwpn0lADD5hSo) |
+| dvm_v7.tar.xz [1][2] | 3.40 | 0.70 | 2026-02-07 | [Google Drive](https://drive.google.com/file/d/1mwLflrDo4P06W1H26qbXiJZv-2aSYssh) |
+| dvm_v7-dev.6.tar.xz [1][2] | 3.36 | 0.69 | 2026-01-28 | [Google Drive](https://drive.google.com/file/d/1B4hdxRUkbK-PoF_Oh6nwZ6GeFu0MHeMK) |
+| dvm_v7-dev.2.tar.xz [1][2] | 2.97 | 0.67 | 2025-11-24 | [Google Drive](https://drive.google.com/file/d/1jvPNAQFk8HyuuMjYHMWpScZdtK9zUoYR) |
+| dvm_v6.tar.xz [1][2] | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
+| dvm_v6_preview.tar.xz [1][2] | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
+| dvm_v5.tar.xz [2][3] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
+| dvm_v3.tar.xz [3][4][5] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
 
-[1] Has a desktop environment: LXQt  
-[2] Virtual Disk Image only  
-[3] Has a desktop environment: Xfce  
-[4] Password is 'changeme'
+[1] Contains machine directory  
+[2] Has a desktop environment: LXQt  
+[3] Contains Virtual Disk Image only  
+[4] Has a desktop environment: Xfce  
+[5] Password is 'changeme'
 
 A complete list with releases and their checksums is available at [docs/releases.md](docs/releases.md).
 
