@@ -5,11 +5,8 @@ packages:
   - unzip
   - wget
 
-# Scripts without a description are not added to the README
 # 'scripts' are copied to /usr/local/bin
 scripts:
-  - Name: combine
-    Extension: .py
   - Name: dvmconf
     Extension: .py
     Description: "Edits dvm settings"

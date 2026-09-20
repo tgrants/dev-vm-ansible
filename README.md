@@ -162,11 +162,10 @@ See [docs/create.md](docs/create.md). Experimental.
 
 #### Telemetry
 
-Some data is collected to estimate the amount of prebuilt VMs in use and their versions.
-Telemetry settings are defined in [`dvm.conf`](roles/base/templates/dvm.conf.j2).
-You can enable and disable this by running `dvmconf set combine enabled false` or editing the config manually.
-
-The following data is collected: `public_ip`, `timestamp`, `id` and `version`.
+Some data is collected to estimate the amount of VMs in use and their versions.
+You can disable this by running `dvmconf set combine enabled false`.
+To read more about data collection and settings,
+see[docs/telemetry.md](docs/telemetry.md).
 
 #### Distribute the image
 

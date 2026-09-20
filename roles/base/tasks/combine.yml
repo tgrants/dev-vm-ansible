@@ -1,0 +1,30 @@
+---
+
+- name: Create combine from template
+  ansible.builtin.template:
+    src: "combine.py.j2"
+    dest: "/usr/local/bin/combine"
+    mode: '0755'
+
+- name: Install combine systemd service
+  ansible.builtin.template:
+    src: systemd/combine.service.j2
+    dest: /etc/systemd/system/combine.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Install combine systemd timer
+  ansible.builtin.template:
+    src: systemd/combine.timer.j2
+    dest: /etc/systemd/system/combine.timer
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable and start combine timer
+  ansible.builtin.systemd_service:
+    name: combine.timer
+    enabled: true
+    state: started
+    daemon_reload: true

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run combine every 10 minutes
+
+[Timer]
+OnBootSec=0
+OnUnitActiveSec=10min
+Unit=combine.service
+
+[Install]
+WantedBy=timers.target
