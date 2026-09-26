@@ -1,12 +1,12 @@
-name: Ansible Issue
-description: Report a problem related to the playbook
-labels: [Ansible, Bug]
+name: Bug Report
+description: Report a bug
+labels: [bug]
 body:
   - type: input
     id: version
     attributes:
       label: Version
-      description: Specify the version.
+      description: Specify the dvm version.
     validations:
       required: true
 
