@@ -74,13 +74,10 @@ If you don't require a custom configuration, you can use one of these prebuilt v
 | dvm_v6.tar.xz [1][2] | 3.66 | 0.86 | 2025-11-20 | [Google Drive](https://drive.google.com/file/d/1Rjvfs3aRKbXJhgDuVvdDD8T10-sTT2ju) |
 | dvm_v6_preview.tar.xz [1][2] | 3.90 | 1.02 | 2025-10-20 | [Google Drive](https://drive.google.com/file/d/1q-qfP15oDofYdsbwd0SO9UMu6PDzYbKI) |
 | dvm_v5.tar.xz [2][3] | 4.12 | 1.15 | 2025-09-11 | [Google Drive](https://drive.google.com/file/d/1Z91MYWgvkLd0_oxOPxRJj9C7Ik0hEWZq) |
-| dvm_v3.tar.xz [3][4][5] | 3.94 | 0.75 | 2024-09-28 | [Google Drive](https://drive.google.com/file/d/145d_nEzQ6dN0q9TqrJupR4yhy82o4wGR) |
 
 [1] Contains machine directory  
 [2] Has a desktop environment: LXQt  
-[3] Contains Virtual Disk Image only  
-[4] Has a desktop environment: Xfce  
-[5] Password is 'changeme'
+[3] Contains Virtual Disk Image only
 
 A complete list with releases and their checksums is available at [docs/releases.md](docs/releases.md).
 
@@ -100,9 +97,7 @@ To run the playbook, you need to install Ansible on your control machine.
 
 #### Create the virtual machine
 
-##### With preseeding
-
-See [docs/create.md](docs/create.md). Experimental.
+See [docs/create.md](docs/create.md), or create it manually.
 
 ##### Manually
 
